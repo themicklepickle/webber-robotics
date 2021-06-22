@@ -1,0 +1,24 @@
+import PriorityHighRoundedIcon from "@material-ui/icons/PriorityHighRounded";
+import { Icon, Tooltip } from "@material-ui/core";
+
+import usePriority from "./usePriority";
+
+const Priority = (props) => {
+  const { label, color } = usePriority(props);
+
+  return (
+    <Tooltip title={label} placement="bottom">
+      <Icon
+        style={{
+          verticalAlign: "middle",
+        }}
+      >
+        <PriorityHighRoundedIcon
+          style={{ color: color }}
+        ></PriorityHighRoundedIcon>
+      </Icon>
+    </Tooltip>
+  );
+};
+
+export default Priority;
