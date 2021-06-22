@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/item.css";
+import "./item.css";
 import { Grid, Box, Paper, IconButton } from "@material-ui/core";
 import IsPurchasedCheckBox from "./IsPurchasedCheckBox/IsPurchasedCheckBox";
 import EditIcon from "@material-ui/icons/Edit";

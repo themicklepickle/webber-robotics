@@ -1,4 +1,4 @@
-import "./styles/budget.css";
+import "./budget.css";
 import Item from "./Item/Item";
 import { Fab, Typography } from "@material-ui/core";
 import Adder from "./Adder/Adder";
