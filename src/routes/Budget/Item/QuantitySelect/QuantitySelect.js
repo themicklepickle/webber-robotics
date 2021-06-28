@@ -24,9 +24,7 @@ const QuantitySelect = ({ quantity, setQuantity }) => {
         style: { padding: 0 },
         min: 1,
       }}
-    >
-      hello
-    </InputBase>
+    />
   );
 };
 
