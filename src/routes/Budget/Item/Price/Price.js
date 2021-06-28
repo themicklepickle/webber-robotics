@@ -11,7 +11,7 @@ const Price = ({ amount, currency, newCurrency, date }) => {
   );
 
   if (amountString === null) {
-    return <CircularProgress />;
+    return <CircularProgress color="secondary" />;
   }
 
   return `${currencySymbol}${amountString} ${currencyCode}`;
