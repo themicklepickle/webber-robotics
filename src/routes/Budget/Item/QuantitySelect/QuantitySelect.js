@@ -2,9 +2,9 @@ import { InputAdornment, InputBase } from "@material-ui/core";
 
 import useQuantitySelect from "./useQuantitySelect";
 
-const QuantitySelect = (props) => {
+const QuantitySelect = ({ quantity, setQuantity }) => {
   // TODO: check whether or not the input is valid. If not, change the font color of everything to red
-  const { quantity, updateQuantity, borderStyle } = useQuantitySelect(props);
+  const { updateQuantity, borderStyle } = useQuantitySelect(setQuantity);
 
   const adornment = (
     <InputAdornment position="start" style={{ fontStyle: "italic" }}>

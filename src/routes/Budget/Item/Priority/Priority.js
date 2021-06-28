@@ -3,8 +3,8 @@ import { Icon, Tooltip } from "@material-ui/core";
 
 import usePriority from "./usePriority";
 
-const Priority = (props) => {
-  const { label, color } = usePriority(props);
+const Priority = ({ priorityLevel }) => {
+  const { label, color } = usePriority(priorityLevel);
 
   return (
     <Tooltip title={label} placement="bottom">

@@ -59,7 +59,7 @@ const Item = (props) => {
           <Box fontWeight="fontWeightBold">{props.name}</Box>
         </Grid>
         <Grid item xs={1}>
-          <Priority priority={props.priority} />
+          <Priority priorityLevel={props.priority} />
         </Grid>
         {/* <Grid item xs={5}>
           {props.description}

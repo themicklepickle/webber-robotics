@@ -1,27 +1,21 @@
 import { useState } from "react";
 
-const useQuantitySelect = ({ quantity, setQuantity }) => {
+const useQuantitySelect = (setQuantity) => {
   const [borderStyle, setBorderStyle] = useState({});
 
   const updateQuantity = (e) => {
     const newValue = e.target.value;
 
+    const invalidBorderStyle = {
+      borderBottom: "2px solid red",
+      borderRadius: "2px",
+    };
+
     setQuantity(newValue);
-
-    if (newValue <= 0) {
-      setBorderStyle({ borderBottom: "2px solid red", borderRadius: "2px" });
-      return;
-    }
-
-    setBorderStyle({});
-    // TODO: store in DB
+    setBorderStyle(newValue <= 0 ? invalidBorderStyle : {});
   };
 
-  return {
-    quantity: quantity,
-    updateQuantity: updateQuantity,
-    borderStyle: borderStyle,
-  };
+  return { updateQuantity, borderStyle };
 };
 
 export default useQuantitySelect;

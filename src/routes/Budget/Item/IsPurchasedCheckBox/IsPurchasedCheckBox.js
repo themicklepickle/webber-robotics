@@ -2,8 +2,13 @@ import React from "react";
 import { IconButton } from "@material-ui/core";
 import useIsPurchasedCheckBox from "./useIsPurchasedCheckBox";
 
-const IsPurchasedCheckBox = (props) => {
-  const { icon, toggleCheck } = useIsPurchasedCheckBox(props);
+const IsPurchasedCheckBox = ({ isChecked, datePurchased, check, uncheck }) => {
+  const { icon, toggleCheck } = useIsPurchasedCheckBox(
+    isChecked,
+    datePurchased,
+    check,
+    uncheck
+  );
 
   return <IconButton onClick={toggleCheck}>{icon}</IconButton>;
 };

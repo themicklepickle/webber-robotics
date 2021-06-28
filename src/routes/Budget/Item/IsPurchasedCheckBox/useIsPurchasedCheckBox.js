@@ -3,12 +3,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import { green } from "@material-ui/core/colors";
 
-const useIsPurchasedCheckBox = ({
-  isChecked,
-  datePurchased,
-  check,
-  uncheck,
-}) => {
+const useIsPurchasedCheckBox = (isChecked, datePurchased, check, uncheck) => {
   const getIcon = () => {
     if (isChecked) {
       return <CheckBoxIcon style={{ color: green[500] }}></CheckBoxIcon>;
@@ -37,11 +32,9 @@ const useIsPurchasedCheckBox = ({
     }
   };
 
-  const icon = getIcon();
-  return {
-    icon: addTooltip(icon),
-    toggleCheck: toggleCheck,
-  };
+  const icon = addTooltip(getIcon());
+
+  return { icon, toggleCheck };
 };
 
 export default useIsPurchasedCheckBox;
