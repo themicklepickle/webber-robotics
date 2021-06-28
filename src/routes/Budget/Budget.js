@@ -26,7 +26,7 @@ const Budget = ({ name }) => {
               key={index}
               {...item}
               deleteItem={() => deleteItem(index)}
-              updateItem={updateItem}
+              updateItem={(newItem) => updateItem(newItem, index)}
             />
           );
         })}

@@ -26,7 +26,6 @@ const classes = {
 };
 
 const Item = ({
-  deleteItem,
   name,
   priority,
   vendor,
@@ -34,6 +33,8 @@ const Item = ({
   description,
   unitPrice,
   unitPriceCurrency,
+  deleteItem,
+  updateItem,
   ...restProps
 }) => {
   const itemToJSON = () => ({
