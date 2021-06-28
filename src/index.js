@@ -1,6 +1,8 @@
+import "./styles/index.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
+
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import App from "./App";

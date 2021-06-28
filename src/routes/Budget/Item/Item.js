@@ -1,17 +1,16 @@
-import React from "react";
-
 import "./item.css";
+
 import { Grid, Box, Paper, IconButton } from "@material-ui/core";
-import IsPurchasedCheckBox from "./IsPurchasedCheckBox/IsPurchasedCheckBox";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import Priority from "./Priority/Priority";
 import Vendor from "./Vendor/Vendor";
 import Price from "./Price/Price";
+import QuantitySelect from "./QuantitySelect/QuantitySelect";
+import IsPurchasedCheckBox from "./IsPurchasedCheckBox/IsPurchasedCheckBox";
 
 import useItem from "./useItem";
-import QuantitySelect from "./QuantitySelect/QuantitySelect";
 
 const classes = {
   paper: {

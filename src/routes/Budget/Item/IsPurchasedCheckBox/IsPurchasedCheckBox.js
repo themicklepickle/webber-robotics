@@ -1,5 +1,5 @@
-import React from "react";
 import { IconButton } from "@material-ui/core";
+
 import useIsPurchasedCheckBox from "./useIsPurchasedCheckBox";
 
 const IsPurchasedCheckBox = ({ isChecked, datePurchased, check, uncheck }) => {

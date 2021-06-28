@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 import getSymbolFromCurrency from "currency-symbol-map";
 import { exchangeRates } from "exchange-rates-api";
-import { useState } from "react";
 
 const usePrice = (amount, currency, newCurrency, date) => {
   const [convertedAmount, setConvertedAmount] = useState(null);
