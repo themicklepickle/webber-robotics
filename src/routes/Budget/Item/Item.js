@@ -37,6 +37,19 @@ const Item = ({
   unitPriceCurrency,
   ...restProps
 }) => {
+  const itemToJSON = () => ({
+    name,
+    priority,
+    description,
+    vendor,
+    quantity,
+    unitPrice,
+    unitPriceCurrency,
+    isPurchased,
+    datePurchased,
+    url,
+  });
+
   const { isPurchased, datePurchased, check, uncheck, quantity, setQuantity } =
     useItem(restProps.isPurchased, restProps.datePurchased, restProps.quantity);
 
