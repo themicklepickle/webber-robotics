@@ -50,8 +50,15 @@ const Item = ({
     url,
   });
 
+  const update = () => updateItem(itemToJSON());
+
   const { isPurchased, datePurchased, check, uncheck, quantity, setQuantity } =
-    useItem(restProps.isPurchased, restProps.datePurchased, restProps.quantity);
+    useItem(
+      restProps.isPurchased,
+      restProps.datePurchased,
+      restProps.quantity,
+      update
+    );
 
   return (
     <Paper>

@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const useItem = (initialIsPurchased, initialDatePurchased, initialQuantity) => {
+const useItem = (
+  initialIsPurchased,
+  initialDatePurchased,
+  initialQuantity,
+  update
+) => {
   const [isPurchased, setIsPurchased] = useState(initialIsPurchased);
   const [datePurchased, setDatePurchased] = useState(initialDatePurchased);
   const [quantity, setQuantity] = useState(initialQuantity);
+
+  useEffect(update, [isPurchased, quantity]);
 
   const check = () => {
     setIsPurchased(true);
