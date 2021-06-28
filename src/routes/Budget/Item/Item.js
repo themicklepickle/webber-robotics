@@ -26,7 +26,6 @@ const classes = {
 };
 
 const Item = ({
-  itemIndex,
   deleteItem,
   name,
   priority,
