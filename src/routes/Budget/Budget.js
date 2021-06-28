@@ -2,11 +2,9 @@ import "./budget.css";
 
 import { Fab, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import { green } from "@material-ui/core/colors";
 import { Dialog } from "@material-ui/core";
 
 import Item from "./Item/Item";
-import Adder from "./Adder/Adder";
 
 import useBudget from "./useBudget";
 
@@ -39,7 +37,6 @@ const Budget = ({ name }) => {
       </div>
 
       <Dialog open={false}></Dialog>
-      {/* <Adder addItem={addItem} /> */}
     </div>
   );
 };
