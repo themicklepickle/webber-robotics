@@ -50,7 +50,7 @@ const Item = ({
     url,
   });
 
-  const update = () => updateItem(itemToJSON());
+  const update = async () => updateItem(itemToJSON());
 
   const { isPurchased, datePurchased, check, uncheck, quantity, setQuantity } =
     useItem(
