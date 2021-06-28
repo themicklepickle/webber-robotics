@@ -10,14 +10,14 @@ import Adder from "./Adder/Adder";
 
 import useBudget from "./useBudget";
 
-const Budget = (props) => {
-  const [items, addItem, deleteItem, updateItem] = useBudget(props);
+const Budget = ({ name }) => {
+  const { items, addItem, deleteItem, updateItem } = useBudget();
 
   return (
     <div className="wrapper">
       <div>
         <div className="title">
-          <Typography variant="h4">Build Team Purchase List</Typography>
+          <Typography variant="h4">{name}</Typography>
         </div>
 
         {items.map((item, index) => {
@@ -26,7 +26,7 @@ const Budget = (props) => {
               key={index}
               {...item}
               itemIndex={index}
-              deleteItem={deleteItem}
+              deleteItem={() => deleteItem(index)}
               updateItem={updateItem}
             />
           );

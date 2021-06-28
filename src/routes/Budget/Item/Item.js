@@ -25,16 +25,20 @@ const classes = {
   },
 };
 
-const Item = (props) => {
-  const [
-    isPurchased,
-    datePurchased,
-    check,
-    uncheck,
-    quantity,
-    setQuantity,
-    deleteItem,
-  ] = useItem(props);
+const Item = ({
+  itemIndex,
+  deleteItem,
+  name,
+  priority,
+  vendor,
+  url,
+  description,
+  unitPrice,
+  unitPriceCurrency,
+  ...restProps
+}) => {
+  const { isPurchased, datePurchased, check, uncheck, quantity, setQuantity } =
+    useItem(restProps.isPurchased, restProps.datePurchased, restProps.quantity);
 
   return (
     <Paper>
@@ -55,41 +59,34 @@ const Item = (props) => {
           />
         </Grid>
         <Grid item xs={5}>
-          <Box fontWeight="fontWeightBold">{props.name}</Box>
+          <Box fontWeight="fontWeightBold">{name}</Box>
         </Grid>
         <Grid item xs={1}>
-          <Priority priorityLevel={props.priority} />
+          <Priority priorityLevel={priority} />
         </Grid>
         {/* <Grid item xs={5}>
-          {props.description}
+          {description}
         </Grid> */}
         <Grid item xs={2}>
-          <Vendor
-            vendorName={props.vendor.name}
-            vendorLogo={props.vendor.logo}
-            url={props.url}
-          />
+          <Vendor vendorName={vendor.name} vendorLogo={vendor.logo} url={url} />
         </Grid>
         <Grid item xs={2}>
           <Box fontWeight="fontWeightLight">
-            <Price
-              amount={props.unitPrice}
-              currency={props.unitPriceCurrency}
-            />
+            <Price amount={unitPrice} currency={unitPriceCurrency} />
           </Box>
         </Grid>
         <Grid item xs={1}>
           {/* <Box
             fontWeight="fontWeightLight"
             fontStyle="italic"
-          >{`x${props.quantity}`}</Box> */}
+          >{`x${quantity}`}</Box> */}
           <QuantitySelect quantity={quantity} setQuantity={setQuantity} />
         </Grid>
         <Grid item xs={2}>
           <Box fontWeight="fontWeightBold">
             <Price
-              amount={props.unitPrice * quantity}
-              currency={props.unitPriceCurrency}
+              amount={unitPrice * quantity}
+              currency={unitPriceCurrency}
               newCurrency={"CAD"}
               date={datePurchased}
             />

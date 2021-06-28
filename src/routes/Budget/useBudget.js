@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import defaultItems from "./defaultItems";
 
-const useBudget = (props) => {
+const useBudget = () => {
   const [items, setItems] = useState(defaultItems);
   const [open, setOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const useBudget = (props) => {
     setItems(newItems);
   };
 
-  return [items, addItem, deleteItem, updateItem];
+  return { items, addItem, deleteItem, updateItem };
 };
 
 export default useBudget;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const useItem = (props) => {
-  const [isPurchased, setIsPurchased] = useState(props.isPurchased);
-  const [datePurchased, setDatePurchased] = useState(props.datePurchased);
-  const [quantity, setQuantity] = useState(props.quantity);
+const useItem = (initialIsPurchased, initialDatePurchased, initialQuantity) => {
+  const [isPurchased, setIsPurchased] = useState(initialIsPurchased);
+  const [datePurchased, setDatePurchased] = useState(initialDatePurchased);
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const check = () => {
     setIsPurchased(true);
@@ -15,20 +15,14 @@ const useItem = (props) => {
     setDatePurchased(null);
   };
 
-  const deleteItem = () => {
-    console.log(props.itemIndex);
-    props.deleteItem(props.itemIndex);
-  };
-
-  return [
+  return {
     isPurchased,
     datePurchased,
     check,
     uncheck,
     quantity,
     setQuantity,
-    deleteItem,
-  ];
+  };
 };
 
 export default useItem;
