@@ -16,7 +16,9 @@ const useQuantitySelect = (setQuantity) => {
     }
 
     setQuantity(newValue);
-    setBorderStyle(newValue === 0 ? invalidBorderStyle : {});
+    setBorderStyle(
+      newValue === "0" || newValue === "" ? invalidBorderStyle : {}
+    );
   };
 
   return { updateQuantity, borderStyle };
