@@ -88,7 +88,11 @@ const Item = ({
           {description}
         </Grid> */}
         <Grid item xs={2}>
-          <Vendor vendorName={vendor.name} vendorLogo={vendor.logo} url={url} />
+          <Vendor
+            vendorName={vendor?.name}
+            vendorLogo={vendor?.logo}
+            url={url}
+          />
         </Grid>
         <Grid item xs={2}>
           <Box fontWeight="fontWeightLight">
