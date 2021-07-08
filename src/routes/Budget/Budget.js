@@ -2,14 +2,22 @@ import "./budget.css";
 
 import { Fab, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import { Dialog } from "@material-ui/core";
 
 import Item from "./Item/Item";
+import CreateItem from "./CreateItem/CreateItem";
 
 import useBudget from "./useBudget";
 
 const Budget = ({ name }) => {
-  const { items, addItem, deleteItem, updateItem } = useBudget();
+  const {
+    items,
+    addItem,
+    deleteItem,
+    updateItem,
+    createItemIsVisible,
+    openCreateItem,
+    closeCreateItem,
+  } = useBudget();
 
   return (
     <div className="wrapper">
@@ -31,12 +39,16 @@ const Budget = ({ name }) => {
       </div>
 
       <div className="button-section">
-        <Fab color="secondary" onClick={() => addItem(items[0])}>
+        <Fab color="primary" onClick={openCreateItem}>
           <AddIcon />
         </Fab>
       </div>
 
-      <Dialog open={false}></Dialog>
+      <CreateItem
+        isOpen={createItemIsVisible}
+        close={closeCreateItem}
+        addItem={addItem}
+      />
     </div>
   );
 };
