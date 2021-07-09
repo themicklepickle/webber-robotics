@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { item1, item2, item3 } from "./defaultItemData";
 
 import { shortCurrencyList, longCurrencyList } from "./currencyLists";
+import { toTitleCase } from "../../../utils/capitalization";
 
 const fetchItemData = async (url) => {
   if (url === "hi") return {};
@@ -39,6 +40,7 @@ const useCreateItem = (setInitialStep, addItem) => {
   const [formValues, setFormValues] = useState(defaultItem);
   const [suggestedVendors, setSuggestedVendors] = useState([]);
   const [vendorInputValue, setVendorInputValue] = useState("");
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (!itemData) return;
@@ -195,6 +197,25 @@ const useCreateItem = (setInitialStep, addItem) => {
     addItem(formValues);
   };
 
+  const getTextFieldProps = (fieldName) => {
+    const commonProps = {
+      autoComplete: "off",
+      spellCheck: false,
+      fullWidth: true,
+      variant: "standard",
+    };
+
+    const uniqueProps = {
+      name: fieldName,
+      label: toTitleCase(fieldName),
+      value: formValues[fieldName],
+      error: errors[fieldName],
+      onChange: handleFormChange,
+    };
+
+    return Object.assign(commonProps, uniqueProps);
+  };
+
   return {
     reset,
     searchURL,
@@ -222,6 +243,7 @@ const useCreateItem = (setInitialStep, addItem) => {
     vendorInputValue,
     handleVendorInputChange,
     handleVendorChange,
+    getTextFieldProps,
   };
 };
 

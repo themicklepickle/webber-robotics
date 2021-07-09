@@ -66,6 +66,7 @@ const CreateItem = ({ isOpen, close, addItem }) => {
     vendorInputValue,
     handleVendorInputChange,
     handleVendorChange,
+    getTextFieldProps,
   } = useCreateItem(setInitialStep, addItem);
 
   const cancelButton = (
@@ -126,42 +127,13 @@ const CreateItem = ({ isOpen, close, addItem }) => {
       <DialogContent>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <TextField
-              label="Name"
-              name="name"
-              value={formValues.name}
-              onChange={handleFormChange}
-              autoFocus
-              autoComplete="off"
-              spellCheck={false}
-              fullWidth
-              variant="standard"
-            />
+            <TextField {...getTextFieldProps("name")} autoFocus />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="Description"
-              name="description"
-              value={formValues.description}
-              onChange={handleFormChange}
-              autoComplete="off"
-              spellCheck={false}
-              multiline
-              fullWidth
-              variant="standard"
-            />
+            <TextField {...getTextFieldProps("description")} multiline />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              label="URL"
-              name="url"
-              value={formValues.url}
-              onChange={handleFormChange}
-              autoComplete="off"
-              spellCheck={false}
-              fullWidth
-              variant="standard"
-            />
+            <TextField {...getTextFieldProps("url")} label="URL" />
           </Grid>
           <Grid item xs={10}>
             <Autocomplete
@@ -189,12 +161,7 @@ const CreateItem = ({ isOpen, close, addItem }) => {
                 </Box>
               )}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Vendor"
-                  autoComplete="new-password"
-                  variant="standard"
-                />
+                <TextField {...getTextFieldProps("vendor")} {...params} />
               )}
             />
           </Grid>
@@ -206,20 +173,14 @@ const CreateItem = ({ isOpen, close, addItem }) => {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              {...getTextFieldProps("unitPriceCurrency")}
               label="Currency"
-              name="unitPriceCurrency"
-              value={formValues.unitPriceCurrency}
               onChange={handleUnitPriceCurrencyChange}
               onClickCapture={openCurrencySelect}
               SelectProps={{
                 MenuProps: { onClose: closeCurrencySelect },
                 open: currencySelectIsOpen,
               }}
-              autoComplete="off"
-              spellCheck={false}
-              fullWidth
-              select
-              variant="standard"
             >
               {currencies.list.map(({ code }) => (
                 <MenuItem key={code} value={code}>
@@ -235,14 +196,8 @@ const CreateItem = ({ isOpen, close, addItem }) => {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              {...getTextFieldProps("unitPrice")}
               label="Unit Price"
-              name="unitPrice"
-              value={formValues.unitPrice}
-              onChange={handleFormChange}
-              autoComplete="off"
-              spellCheck={false}
-              fullWidth
-              variant="standard"
               type="number"
               InputProps={{
                 startAdornment: (
