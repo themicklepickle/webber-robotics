@@ -15,11 +15,12 @@ import {
   InputAdornment,
   Slider,
   Switch,
+  Autocomplete,
 } from "@material-ui/core";
+import { DatePicker } from "@material-ui/lab";
 import { SearchRounded } from "@material-ui/icons";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import DatePicker from "@material-ui/lab/DatePicker";
 
 import getSymbolFromCurrency from "currency-symbol-map";
 
@@ -56,12 +57,15 @@ const CreateItem = ({ isOpen, close, addItem }) => {
     handleFormChange,
     setQuantity,
     createItem,
-    handleVendorChange,
     handleDatePurchasedChange,
     getPriorityMarks,
     handlePriorityChange,
     getPriorityValue,
     handleIsPurchasedChange,
+    suggestedVendors,
+    vendorInputValue,
+    handleVendorInputChange,
+    handleVendorChange,
   } = useCreateItem(setInitialStep, addItem);
 
   const cancelButton = (
@@ -160,15 +164,44 @@ const CreateItem = ({ isOpen, close, addItem }) => {
             />
           </Grid>
           <Grid item xs={10}>
-            <TextField
-              label="Vendor"
+            <Autocomplete
               name="vendor"
-              value={formValues.vendor?.name}
+              options={suggestedVendors}
+              getOptionLabel={(vendor) => vendor.name}
+              inputValue={vendorInputValue}
+              onInputChange={handleVendorInputChange}
               onChange={handleVendorChange}
-              autoComplete="off"
-              spellCheck={false}
-              fullWidth
-              variant="standard"
+              isOptionEqualToValue={(option, value) =>
+                option.domain === value.domain
+              }
+              filterOptions={(x) => x}
+              renderOption={(props, vendor) => (
+                <Box component="li" {...props} key={vendor.domain}>
+                  <img
+                    style={{
+                      maxHeight: "2em",
+                      maxWidth: "2em",
+                      marginRight: "1em",
+                    }}
+                    src={vendor.logo}
+                  />
+                  {vendor.name} — {vendor.domain}
+                </Box>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Vendor"
+                  autoComplete="new-password"
+                  variant="standard"
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={2} alignSelf="flex-end">
+            <img
+              style={{ maxWidth: "100%", maxHeight: "2em" }} // TODO: find a more elegant solution for restricting the logo height
+              src={formValues.vendor?.logo}
             />
           </Grid>
           <Grid item xs={6}>

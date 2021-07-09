@@ -37,6 +37,8 @@ const useCreateItem = (setInitialStep, addItem) => {
   const [currencies, setCurrencies] = useState(shortCurrencyList);
   const [currencySelectIsOpen, setCurrencySelectIsOpen] = useState(false);
   const [formValues, setFormValues] = useState(defaultItem);
+  const [suggestedVendors, setSuggestedVendors] = useState([]);
+  const [vendorInputValue, setVendorInputValue] = useState("");
 
   useEffect(() => {
     if (!itemData) return;
@@ -48,10 +50,30 @@ const useCreateItem = (setInitialStep, addItem) => {
     setFormValuesToItemData();
   }, [itemData]);
 
+  useEffect(() => {
+    const autocompleteVendors = async () => {
+      if (!vendorInputValue || vendorInputValue.charAt(0) === " ") {
+        setSuggestedVendors([]);
+        return;
+      }
+
+      const response = await fetch(
+        `https://autocomplete.clearbit.com/v1/companies/suggest?query=${vendorInputValue}`
+      );
+      const suggestions = await response.json();
+
+      if (suggestions.message) return; // API error
+
+      setSuggestedVendors(suggestions);
+    };
+    autocompleteVendors();
+  }, [vendorInputValue]);
+
   const priorities = ["Low", "Medium", "High"]; // TODO: make this a prop
 
   const setFormValuesToItemData = () => {
     setFormValues(Object.assign(formValues, itemData));
+    setVendorInputValue(itemData.vendor?.name);
   };
 
   const search = async () => {
@@ -75,6 +97,8 @@ const useCreateItem = (setInitialStep, addItem) => {
     setInitialStep();
     setCurrencies(shortCurrencyList);
     setFormValues(defaultItem);
+    setSuggestedVendors([]);
+    setVendorInputValue("");
   };
 
   const expandCurrencies = () => {
@@ -108,13 +132,14 @@ const useCreateItem = (setInitialStep, addItem) => {
     }
   };
 
-  const handleVendorChange = async (e) => {
-    const newVendorName = e.target.value;
+  const handleVendorInputChange = async (e, newValue, reason) => {
+    if (reason === "reset" && newValue === "") return;
 
-    setFormValues({
-      ...formValues,
-      vendor: { ...formValues.vendor, name: newVendorName },
-    });
+    setVendorInputValue(newValue);
+  };
+
+  const handleVendorChange = async (e, newVendor) => {
+    setFormValues({ ...formValues, vendor: newVendor });
   };
 
   const handleDatePurchasedChange = async (newDatePurchased) => {
@@ -188,12 +213,15 @@ const useCreateItem = (setInitialStep, addItem) => {
     handleFormChange,
     setQuantity,
     createItem,
-    handleVendorChange,
     handleDatePurchasedChange,
     getPriorityMarks,
     handlePriorityChange,
     getPriorityValue,
     handleIsPurchasedChange,
+    suggestedVendors,
+    vendorInputValue,
+    handleVendorInputChange,
+    handleVendorChange,
   };
 };
 
