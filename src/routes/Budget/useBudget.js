@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-import defaultItems from "./defaultItems";
-
 const useBudget = () => {
-  const [items, setItems] = useState(defaultItems);
+  const [items, setItems] = useState([]);
   const [createItemIsVisible, setCreateItemIsVisible] = useState(true);
 
   const addItem = (item) => {
