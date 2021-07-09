@@ -67,6 +67,7 @@ const CreateItem = ({ isOpen, close, addItem }) => {
     handleVendorInputChange,
     handleVendorChange,
     getTextFieldProps,
+    validateItemDetails,
   } = useCreateItem(setInitialStep, addItem);
 
   const cancelButton = (
@@ -222,7 +223,9 @@ const CreateItem = ({ isOpen, close, addItem }) => {
             <Button onClick={previousStep}>Back</Button>
           </Grid>
           <Grid item>
-            <Button onClick={nextStep}>Next</Button>
+            <Button onClick={() => validateItemDetails() && nextStep()}>
+              Next
+            </Button>
           </Grid>
         </Grid>
       </DialogActions>

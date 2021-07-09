@@ -101,6 +101,7 @@ const useCreateItem = (setInitialStep, addItem) => {
     setFormValues(defaultItem);
     setSuggestedVendors([]);
     setVendorInputValue("");
+    setErrors({});
   };
 
   const expandCurrencies = () => {
@@ -216,6 +217,21 @@ const useCreateItem = (setInitialStep, addItem) => {
     return Object.assign(commonProps, uniqueProps);
   };
 
+  const validateItemDetails = () => {
+    const newErrors = {
+      name: formValues.name === "",
+      description: formValues.name === "",
+      url: formValues.url === "",
+      vendor: !formValues.vendor || formValues.vendor.name === "",
+      currency: formValues.currency === "",
+      unitPrice: formValues.unitPrice <= 0,
+    };
+
+    setErrors(newErrors);
+
+    return Object.values(newErrors).every((value) => value === false);
+  };
+
   return {
     reset,
     searchURL,
@@ -244,6 +260,7 @@ const useCreateItem = (setInitialStep, addItem) => {
     handleVendorInputChange,
     handleVendorChange,
     getTextFieldProps,
+    validateItemDetails,
   };
 };
 
