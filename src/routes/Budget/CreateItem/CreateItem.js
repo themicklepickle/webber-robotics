@@ -161,7 +161,10 @@ const CreateItem = ({ isOpen, close, addItem }) => {
                 </Box>
               )}
               renderInput={(params) => (
-                <TextField {...getTextFieldProps("vendor")} {...params} />
+                <TextField
+                  {...getTextFieldProps("vendor", { onChange: true })}
+                  {...params}
+                />
               )}
             />
           </Grid>

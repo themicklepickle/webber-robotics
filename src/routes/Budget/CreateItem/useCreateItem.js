@@ -197,20 +197,20 @@ const useCreateItem = (setInitialStep, addItem) => {
     addItem(formValues);
   };
 
-  const getTextFieldProps = (fieldName) => {
+  const getTextFieldProps = (fieldName, propsToOmit = {}) => {
     const commonProps = {
-      autoComplete: "off",
-      spellCheck: false,
-      fullWidth: true,
-      variant: "standard",
+      autoComplete: propsToOmit.autoComplete ? undefined : "off",
+      spellCheck: propsToOmit.spellCheck ? undefined : false,
+      fullWidth: propsToOmit.fullWidth ? undefined : true,
+      variant: propsToOmit.variant ? undefined : "standard",
     };
 
     const uniqueProps = {
-      name: fieldName,
-      label: toTitleCase(fieldName),
-      value: formValues[fieldName],
-      error: errors[fieldName],
-      onChange: handleFormChange,
+      name: propsToOmit.name ? undefined : fieldName,
+      label: propsToOmit.label ? undefined : toTitleCase(fieldName),
+      value: propsToOmit.value ? undefined : formValues[fieldName],
+      error: propsToOmit.error ? undefined : errors[fieldName],
+      onChange: propsToOmit.onChange ? undefined : handleFormChange,
     };
 
     return Object.assign(commonProps, uniqueProps);
