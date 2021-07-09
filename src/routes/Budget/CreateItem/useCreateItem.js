@@ -82,10 +82,8 @@ const useCreateItem = (setInitialStep, addItem) => {
 
     const data = await fetchItemData(searchURL);
 
-    setTimeout(() => {
-      setItemData(data);
-      setLoadingItems(false);
-    }, 1000);
+    setItemData(data);
+    setLoadingItems(false);
   };
 
   const reset = () => {
