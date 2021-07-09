@@ -174,6 +174,7 @@ const CreateItem = ({ isOpen, close, addItem }) => {
           <Grid item xs={6}>
             <TextField
               {...getTextFieldProps("unitPriceCurrency")}
+              select
               label="Currency"
               onChange={handleUnitPriceCurrencyChange}
               onClickCapture={openCurrencySelect}
