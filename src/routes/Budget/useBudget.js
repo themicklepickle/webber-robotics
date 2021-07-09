@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-import defaultItems from "./defaultItems";
-
 const useBudget = () => {
-  const [items, setItems] = useState(defaultItems);
-  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState([]);
+  const [createItemIsVisible, setCreateItemIsVisible] = useState(true);
 
   const addItem = (item) => {
     setItems([...items, item]);
@@ -24,7 +22,23 @@ const useBudget = () => {
     setItems(newItems);
   };
 
-  return { items, addItem, deleteItem, updateItem };
+  const openCreateItem = () => {
+    setCreateItemIsVisible(true);
+  };
+
+  const closeCreateItem = () => {
+    setCreateItemIsVisible(false);
+  };
+
+  return {
+    items,
+    addItem,
+    deleteItem,
+    updateItem,
+    createItemIsVisible,
+    openCreateItem,
+    closeCreateItem,
+  };
 };
 
 export default useBudget;
