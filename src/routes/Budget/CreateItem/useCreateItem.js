@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { item1, item2, item3 } from "./defaultItemData";
-
 import { shortCurrencyList, longCurrencyList } from "./currencyLists";
 import { toTitleCase } from "../../../utils/capitalization";
 
 const fetchItemData = async (url) => {
-  if (url === "hi") return {};
-  if (url === "h") return item2;
-  if (url === "long") return item3;
-  return item1;
+  return {};
 };
 
 const useCreateItem = (setInitialStep, addItem) => {
