@@ -1,0 +1,32 @@
+{
+  "name": "webber-robotics-api",
+  "version": "1.0.0",
+  "description": "API for Webber Robotics web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themicklepickle/webber-robotics.git"
+  },
+  "author": "Michael Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/themicklepickle/webber-robotics/issues"
+  },
+  "homepage": "https://github.com/themicklepickle/webber-robotics#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.1",
+    "mongodb": "^3.6.10",
+    "mongoose": "^5.13.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.10"
+  }
+}
