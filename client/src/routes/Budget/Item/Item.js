@@ -65,7 +65,6 @@ const Item = ({
       <Grid
         container
         direction="row"
-        // justify="space-between"
         alignItems="center"
         columns={16}
         style={classes.paper}
@@ -84,9 +83,6 @@ const Item = ({
         <Grid item xs={1}>
           <Priority priorityLevel={priority} />
         </Grid>
-        {/* <Grid item xs={5}>
-          {description}
-        </Grid> */}
         <Grid item xs={2}>
           <Vendor
             vendorName={vendor?.name}
@@ -100,10 +96,6 @@ const Item = ({
           </Box>
         </Grid>
         <Grid item xs={1}>
-          {/* <Box
-            fontWeight="fontWeightLight"
-            fontStyle="italic"
-          >{`x${quantity}`}</Box> */}
           <QuantitySelect quantity={quantity} setQuantity={setQuantity} />
         </Grid>
         <Grid item xs={2}>
