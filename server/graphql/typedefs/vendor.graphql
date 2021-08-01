@@ -1,0 +1,17 @@
+type Vendor implements Timestamps {
+  id: ID!
+  name: String!
+  domain: String!
+  logo: String!
+
+  items: [Item]!
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+input VendorCreateInput {
+  name: String!
+  logo: String!
+  domain: String!
+}

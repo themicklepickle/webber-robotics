@@ -1,0 +1,48 @@
+type Item implements Timestamps {
+  id: ID!
+  name: String!
+  priority: String!
+  description: String!
+  quantity: Int!
+  unitPrice: Float!
+  unitPriceCurrency: String!
+  isPurchased: Boolean!
+  datePurchased: String!
+  url: String!
+  image: String!
+
+  vendor: Vendor!
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+input ItemCreateInput {
+  name: String!
+  priority: String!
+  description: String!
+  quantity: Int!
+  unitPrice: Float!
+  unitPriceCurrency: String!
+  isPurchased: Boolean!
+  datePurchased: String!
+  url: String!
+  image: String
+
+  vendor: VendorCreateInput!
+}
+
+input ItemUpdateInput {
+  name: String
+  priority: String
+  description: String
+  quantity: Int
+  unitPrice: Float
+  unitPriceCurrency: String
+  isPurchased: Boolean
+  datePurchased: String
+  url: String
+  image: String
+
+  vendor: VendorCreateInput
+}

@@ -1,0 +1,18 @@
+scalar Date
+
+type Query {
+  items: [Item]!
+  item(id: ID!): Item
+
+  vendors: [Vendor]!
+  vendor(id: ID!): Vendor
+}
+
+type Mutation {
+  createItem(item: ItemCreateInput!): Item!
+  updateItem(id: ID!, item: ItemUpdateInput!): Item!
+  # toggleItemPurchased(id: ID!): Item!
+
+  createVendor(vendor: VendorCreateInput!): Vendor!
+  # updateVendor(vendor: VendorUpdateInput!): Vendor
+}
