@@ -196,7 +196,7 @@ const useCreateItem = (setInitialStep) => {
     setFormValues({ ...formValues, isPurchased: value });
   };
 
-  const createItem = () => {
+  const executeCreateItem = () => {
     createItem({
       variables: {
         ...formValues,
@@ -258,7 +258,7 @@ const useCreateItem = (setInitialStep) => {
     formValues,
     handleFormChange,
     setQuantity,
-    createItem,
+    executeCreateItem,
     handleDatePurchasedChange,
     getPriorityMarks,
     handlePriorityChange,

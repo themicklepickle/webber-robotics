@@ -56,7 +56,7 @@ const CreateItem = ({ isOpen, close }) => {
     formValues,
     handleFormChange,
     setQuantity,
-    createItem,
+    executeCreateItem,
     handleDatePurchasedChange,
     getPriorityMarks,
     handlePriorityChange,
@@ -300,7 +300,7 @@ const CreateItem = ({ isOpen, close }) => {
           <Grid item>
             <Button
               onClick={() => {
-                createItem();
+                executeCreateItem();
                 close();
               }}
             >
