@@ -12,10 +12,6 @@ import ITEMS from "../../graphql/queries/items";
 
 import useBudget from "./useBudget";
 
-const addItem = () => {};
-const deleteItem = () => {};
-const updateItem = () => {};
-
 const Budget = ({ name }) => {
   const { createItemIsVisible, openCreateItem, closeCreateItem } = useBudget();
   const { loading, error, data } = useQuery(ITEMS);
@@ -30,15 +26,8 @@ const Budget = ({ name }) => {
           <Typography variant="h4">{name}</Typography>
         </div>
 
-        {data.items.map((item, index) => {
-          return (
-            <Item
-              key={index}
-              {...item}
-              deleteItem={() => deleteItem(index)}
-              updateItem={(newItem) => updateItem(newItem, index)}
-            />
-          );
+        {data.items.map((item) => {
+          return <Item key={item.id} {...item} />;
         })}
       </div>
 
@@ -48,11 +37,7 @@ const Budget = ({ name }) => {
         </Fab>
       </div>
 
-      <CreateItem
-        isOpen={createItemIsVisible}
-        close={closeCreateItem}
-        addItem={addItem}
-      />
+      <CreateItem isOpen={createItemIsVisible} close={closeCreateItem} />
     </div>
   );
 };
