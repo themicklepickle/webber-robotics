@@ -8,16 +8,12 @@ import CreateItem from "./CreateItem/CreateItem";
 
 import useBudget from "./useBudget";
 
+const addItem = () => {};
+const deleteItem = () => {};
+const updateItem = () => {};
+
 const Budget = ({ name }) => {
-  const {
-    items,
-    addItem,
-    deleteItem,
-    updateItem,
-    createItemIsVisible,
-    openCreateItem,
-    closeCreateItem,
-  } = useBudget();
+  const { createItemIsVisible, openCreateItem, closeCreateItem } = useBudget();
 
   return (
     <div className="wrapper">
