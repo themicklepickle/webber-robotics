@@ -37,7 +37,7 @@ const classes = {
   },
 };
 
-const CreateItem = ({ isOpen, close, addItem }) => {
+const CreateItem = ({ isOpen, close }) => {
   const { step, nextStep, previousStep, setInitialStep } = useStep(3);
   const {
     reset,
@@ -68,7 +68,7 @@ const CreateItem = ({ isOpen, close, addItem }) => {
     handleVendorChange,
     getTextFieldProps,
     validateItemDetails,
-  } = useCreateItem(setInitialStep, addItem);
+  } = useCreateItem(setInitialStep);
 
   const cancelButton = (
     <Button onClick={close} color="secondary">

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { useMutation } from "@apollo/client";
+import ADD_ITEM from "../../../graphql/mutations/addItem";
+
 import { shortCurrencyList, longCurrencyList } from "./currencyLists";
 import { toTitleCase } from "../../../utils/capitalization";
 
@@ -7,13 +10,14 @@ const fetchItemData = async (url) => {
   return {};
 };
 
-const useCreateItem = (setInitialStep, addItem) => {
+const useCreateItem = (setInitialStep) => {
   const defaultItem = {
     name: "",
     description: "",
     vendor: {
       name: "",
       logo: "",
+      domain: "",
     },
     url: "",
     unitPrice: "",
@@ -36,6 +40,9 @@ const useCreateItem = (setInitialStep, addItem) => {
   const [suggestedVendors, setSuggestedVendors] = useState([]);
   const [vendorInputValue, setVendorInputValue] = useState("");
   const [errors, setErrors] = useState({});
+  const [addItem, { data, loading, error }] = useMutation(ADD_ITEM, {
+    refetchQueries: ["GetItems"],
+  });
 
   useEffect(() => {
     if (!itemData) return;
@@ -110,8 +117,10 @@ const useCreateItem = (setInitialStep, addItem) => {
   };
 
   const handleFormChange = async (e) => {
-    const value = e.target.value;
     const field = e.target.name;
+    let value = e.target.value;
+
+    if (field === "unitPrice") value = parseFloat(value);
 
     setFormValues({ ...formValues, [field]: value });
   };
@@ -143,7 +152,7 @@ const useCreateItem = (setInitialStep, addItem) => {
   };
 
   const setQuantity = (newQuantity) => {
-    setFormValues({ ...formValues, quantity: newQuantity });
+    setFormValues({ ...formValues, quantity: parseFloat(newQuantity) });
   };
 
   const calculatePriorityValue = (prioritiesArray, index) => {
@@ -188,7 +197,14 @@ const useCreateItem = (setInitialStep, addItem) => {
   };
 
   const createItem = () => {
-    addItem(formValues);
+    addItem({
+      variables: {
+        ...formValues,
+        vendorName: formValues.vendor.name,
+        vendorLogo: formValues.vendor.logo,
+        vendorDomain: formValues.vendor.domain,
+      },
+    });
   };
 
   const getTextFieldProps = (fieldName, propsToOmit = {}) => {
