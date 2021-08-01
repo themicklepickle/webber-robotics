@@ -5,6 +5,10 @@ import AddIcon from "@material-ui/icons/Add";
 
 import Item from "./Item/Item";
 import CreateItem from "./CreateItem/CreateItem";
+import Loading from "../../components/Loading";
+
+import { useQuery } from "@apollo/client";
+import ITEMS from "../../graphql/queries/items";
 
 import useBudget from "./useBudget";
 
@@ -14,6 +18,10 @@ const updateItem = () => {};
 
 const Budget = ({ name }) => {
   const { createItemIsVisible, openCreateItem, closeCreateItem } = useBudget();
+  const { loading, error, data } = useQuery(ITEMS);
+
+  if (loading) return <Loading />;
+  if (error) return <div>Error fetching items :(</div>;
 
   return (
     <div className="wrapper">
@@ -22,7 +30,7 @@ const Budget = ({ name }) => {
           <Typography variant="h4">{name}</Typography>
         </div>
 
-        {items.map((item, index) => {
+        {data.items.map((item, index) => {
           return (
             <Item
               key={index}
