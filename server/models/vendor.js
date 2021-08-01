@@ -7,4 +7,4 @@ const vendorSchema = new Schema({
   logo: String,
 });
 
-module.exports = mongoose.model("Author", vendorSchema);
+module.exports = mongoose.model("Vendor", vendorSchema);
