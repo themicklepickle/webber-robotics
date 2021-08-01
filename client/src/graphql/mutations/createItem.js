@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-const ADD_ITEM = gql`
-  mutation AddItem(
+const CREATE_ITEM = gql`
+  mutation CreateItem(
     $name: String!
     $priority: String!
     $description: String!
@@ -15,7 +15,7 @@ const ADD_ITEM = gql`
     $vendorLogo: String!
     $vendorDomain: String!
   ) {
-    addItem(
+    createItem(
       name: $name
       priority: $priority
       description: $description
@@ -34,4 +34,4 @@ const ADD_ITEM = gql`
   }
 `;
 
-export default ADD_ITEM;
+export default CREATE_ITEM;

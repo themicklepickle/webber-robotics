@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import ADD_ITEM from "../../../graphql/mutations/addItem";
+import CREATE_ITEM from "../../../graphql/mutations/createItem";
 
 import { shortCurrencyList, longCurrencyList } from "./currencyLists";
 import { toTitleCase } from "../../../utils/capitalization";
@@ -40,7 +40,7 @@ const useCreateItem = (setInitialStep) => {
   const [suggestedVendors, setSuggestedVendors] = useState([]);
   const [vendorInputValue, setVendorInputValue] = useState("");
   const [errors, setErrors] = useState({});
-  const [addItem, { data, loading, error }] = useMutation(ADD_ITEM, {
+  const [createItem] = useMutation(CREATE_ITEM, {
     refetchQueries: ["GetItems"],
   });
 
@@ -197,7 +197,7 @@ const useCreateItem = (setInitialStep) => {
   };
 
   const createItem = () => {
-    addItem({
+    createItem({
       variables: {
         ...formValues,
         vendorName: formValues.vendor.name,
