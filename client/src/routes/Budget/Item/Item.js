@@ -10,8 +10,6 @@ import Price from "./Price/Price";
 import QuantitySelect from "./QuantitySelect/QuantitySelect";
 import IsPurchasedCheckBox from "./IsPurchasedCheckBox/IsPurchasedCheckBox";
 
-import useItem from "./useItem";
-
 const classes = {
   paper: {
     padding: "0.5em 0",
@@ -26,40 +24,18 @@ const classes = {
 };
 
 const Item = ({
+  id,
   name,
   priority,
-  vendor,
-  url,
   description,
+  quantity,
   unitPrice,
   unitPriceCurrency,
-  deleteItem,
-  updateItem,
-  ...restProps
+  isPurchased,
+  datePurchased,
+  url,
+  vendor,
 }) => {
-  const itemToJSON = () => ({
-    name,
-    priority,
-    description,
-    vendor,
-    quantity,
-    unitPrice,
-    unitPriceCurrency,
-    isPurchased,
-    datePurchased,
-    url,
-  });
-
-  const update = async () => updateItem(itemToJSON());
-
-  const { isPurchased, datePurchased, check, uncheck, quantity, setQuantity } =
-    useItem(
-      restProps.isPurchased,
-      restProps.datePurchased,
-      restProps.quantity,
-      update
-    );
-
   return (
     <Paper>
       <Grid
@@ -71,10 +47,9 @@ const Item = ({
       >
         <Grid item xs={1}>
           <IsPurchasedCheckBox
-            isChecked={isPurchased}
-            datePurchased={datePurchased}
-            check={check}
-            uncheck={uncheck}
+            itemId={id}
+            initialIsChecked={isPurchased}
+            initialDatePurchased={datePurchased}
           />
         </Grid>
         <Grid item xs={5}>
@@ -96,7 +71,7 @@ const Item = ({
           </Box>
         </Grid>
         <Grid item xs={1}>
-          <QuantitySelect quantity={quantity} setQuantity={setQuantity} />
+          <QuantitySelect itemId={id} initialQuantity={quantity} />
         </Grid>
         <Grid item xs={2}>
           <Box fontWeight="fontWeightBold">
@@ -113,7 +88,7 @@ const Item = ({
             <IconButton>
               <EditIcon></EditIcon>
             </IconButton>
-            <IconButton onClick={deleteItem}>
+            <IconButton>
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </Box>
