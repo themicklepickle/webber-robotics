@@ -11,7 +11,7 @@ type Item implements Timestamps {
   url: String!
   image: String!
 
-  vendor: Vendor!
+  vendor: Vendor
 
   createdAt: Date!
   updatedAt: Date!

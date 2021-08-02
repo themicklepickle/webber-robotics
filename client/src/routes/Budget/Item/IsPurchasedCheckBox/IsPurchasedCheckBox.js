@@ -3,6 +3,9 @@ import { green } from "@material-ui/core/colors";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
+import UPDATE_ITEM from "../../../../graphql/mutations/updateItem";
+import { useMutation } from "@apollo/client";
+
 import { useState } from "react";
 
 const IsPurchasedCheckBox = ({
@@ -11,30 +14,44 @@ const IsPurchasedCheckBox = ({
   initialDatePurchased,
 }) => {
   const [isChecked, setIsChecked] = useState(initialIsChecked);
-  const [datePurchased, setDatePurchased] = useState(initialDatePurchased);
+  const [datePurchased, setDatePurchased] = useState(
+    new Date(initialDatePurchased)
+  );
+  const [updateItem] = useMutation(UPDATE_ITEM, {
+    variables: {
+      id: itemId,
+    },
+    // refetchQueries: ["GetItems"],
+  });
 
-  const check = () => {
-    setIsChecked(true);
-    setDatePurchased(new Date());
-  };
+  const toggleCheck = () => {
+    const newIsChecked = !isChecked;
+    const newDatePurchaed = isChecked ? null : new Date();
 
-  const uncheck = () => {
-    setIsChecked(false);
-    setDatePurchased(null);
+    setIsChecked(newIsChecked);
+    setDatePurchased(newDatePurchaed);
+    updateItem({
+      variables: {
+        isPurchased: newIsChecked,
+        datePurchased: newDatePurchaed,
+      },
+    });
   };
 
   if (isChecked)
-    <IconButton onClick={uncheck}>
-      <Tooltip
-        title={`Purchased on ${datePurchased.toDateString()}`}
-        placement="bottom"
-      >
-        <CheckBoxIcon style={{ color: green[500] }}></CheckBoxIcon>
-      </Tooltip>
-    </IconButton>;
+    return (
+      <IconButton onClick={toggleCheck}>
+        <Tooltip
+          title={`Purchased on ${new Date(datePurchased).toDateString()}`}
+          placement="bottom"
+        >
+          <CheckBoxIcon style={{ color: green[500] }}></CheckBoxIcon>
+        </Tooltip>
+      </IconButton>
+    );
 
   return (
-    <IconButton onClick={check}>
+    <IconButton onClick={toggleCheck}>
       <CheckBoxOutlineBlankIcon></CheckBoxOutlineBlankIcon>
     </IconButton>
   );
