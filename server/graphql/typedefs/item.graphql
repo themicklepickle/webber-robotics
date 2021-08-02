@@ -7,7 +7,7 @@ type Item implements Timestamps {
   unitPrice: Float!
   unitPriceCurrency: String!
   isPurchased: Boolean!
-  datePurchased: String!
+  datePurchased: String
   url: String!
   image: String!
 
