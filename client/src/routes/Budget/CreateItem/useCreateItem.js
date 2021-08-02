@@ -198,12 +198,7 @@ const useCreateItem = (setInitialStep) => {
 
   const executeCreateItem = () => {
     createItem({
-      variables: {
-        ...formValues,
-        vendorName: formValues.vendor.name,
-        vendorLogo: formValues.vendor.logo,
-        vendorDomain: formValues.vendor.domain,
-      },
+      variables: formValues,
     });
   };
 
