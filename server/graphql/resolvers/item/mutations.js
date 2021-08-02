@@ -19,8 +19,10 @@ const itemMutations = {
   },
   updateItem: async (_, { id, item }) => {
     let vendorId;
-    if (Object.keys(item.vendor).length === 0) {
-      vendorId = (await Item.findById(id)).vendor;
+    if (!item.vendor || Object.keys(item.vendor).length === 0) {
+      const savedItem = await Item.findById(id);
+
+      if (savedItem) vendorId = savedItem.vendor;
     } else {
       vendorId = await getVendorId(item.vendor);
     }
