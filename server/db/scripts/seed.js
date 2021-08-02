@@ -3,7 +3,7 @@ import connectDB from "../";
 import { Vendor, Item } from "../models";
 
 const seed = async () => {
-  console.log("Cleanning database");
+  console.log("Cleaning database");
 
   await connectDB();
   await connection.dropDatabase();
