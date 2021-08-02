@@ -6,6 +6,17 @@ const vendorMutations = {
 
     return newVendor;
   },
+  updateVendor: async (_, { id, vendor }) => {
+    const updatedVendor = await Vendor.findByIdAndUpdate(
+      id,
+      {
+        $set: { ...vendor },
+      },
+      { new: true }
+    );
+
+    return updatedVendor;
+  },
 };
 
 export default vendorMutations;

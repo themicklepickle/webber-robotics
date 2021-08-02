@@ -44,5 +44,5 @@ input ItemUpdateInput {
   url: String
   image: String
 
-  vendor: VendorCreateInput
+  vendor: VendorUpdateInput
 }

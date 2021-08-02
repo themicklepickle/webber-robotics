@@ -14,5 +14,5 @@ type Mutation {
   # toggleItemPurchased(id: ID!): Item!
 
   createVendor(vendor: VendorCreateInput!): Vendor!
-  # updateVendor(vendor: VendorUpdateInput!): Vendor
+  updateVendor(id: ID!, vendor: VendorUpdateInput!): Vendor!
 }
