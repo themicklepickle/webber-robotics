@@ -1,14 +1,10 @@
 import { useState } from "react";
 
-const useQuantitySelect = (setQuantity) => {
-  const [borderStyle, setBorderStyle] = useState({});
+const useQuantitySelect = (itemId, initialQuantity, onChange) => {
+  const [isInvalid, setIsInvalid] = useState(false);
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const updateQuantity = (e) => {
-    const invalidBorderStyle = {
-      borderBottom: "2px solid red",
-      borderRadius: "2px",
-    };
-
     let newValue = e.target.value;
 
     if (newValue < 0) {
@@ -16,12 +12,11 @@ const useQuantitySelect = (setQuantity) => {
     }
 
     setQuantity(newValue);
-    setBorderStyle(
-      newValue === "0" || newValue === "" ? invalidBorderStyle : {}
-    );
+    onChange(newValue);
+    setIsInvalid(newValue === "0" || newValue === "");
   };
 
-  return { updateQuantity, borderStyle };
+  return { quantity, updateQuantity, isInvalid };
 };
 
 export default useQuantitySelect;
