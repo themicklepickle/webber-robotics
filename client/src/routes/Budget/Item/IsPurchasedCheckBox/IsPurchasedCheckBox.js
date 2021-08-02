@@ -3,7 +3,7 @@ import { green } from "@material-ui/core/colors";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
-import UPDATE_ITEM from "../../../../graphql/mutations/updateItem";
+import UPDATE_ITEM_PURCHASED from "../../../../graphql/mutations/updateItemPurchased";
 import { useMutation } from "@apollo/client";
 
 import { useState } from "react";
@@ -17,20 +17,19 @@ const IsPurchasedCheckBox = ({
   const [datePurchased, setDatePurchased] = useState(
     new Date(initialDatePurchased)
   );
-  const [updateItem] = useMutation(UPDATE_ITEM, {
+  const [updateItemPurchased] = useMutation(UPDATE_ITEM_PURCHASED, {
     variables: {
       id: itemId,
     },
-    // refetchQueries: ["GetItems"],
   });
 
   const toggleCheck = () => {
     const newIsChecked = !isChecked;
-    const newDatePurchaed = isChecked ? null : new Date();
+    const newDatePurchaed = isChecked ? "" : new Date();
 
     setIsChecked(newIsChecked);
     setDatePurchased(newDatePurchaed);
-    updateItem({
+    updateItemPurchased({
       variables: {
         isPurchased: newIsChecked,
         datePurchased: newDatePurchaed,
