@@ -47,11 +47,12 @@ const useCreateItem = (setInitialStep) => {
   useEffect(() => {
     if (!itemData) return;
 
-    const itemDataIsEmpty = Object.keys(itemData).length == 0;
+    const itemDataIsEmpty = Object.keys(itemData).length === 0;
 
     setNoResults(itemDataIsEmpty);
     setGotResult(!itemDataIsEmpty);
-    setFormValuesToItemData();
+    setFormValues((formValues) => Object.assign(formValues, itemData));
+    setVendorInputValue(itemData.vendor?.name);
   }, [itemData]);
 
   useEffect(() => {
@@ -74,11 +75,6 @@ const useCreateItem = (setInitialStep) => {
   }, [vendorInputValue]);
 
   const priorities = ["Low", "Medium", "High"]; // TODO: make this a prop
-
-  const setFormValuesToItemData = () => {
-    setFormValues(Object.assign(formValues, itemData));
-    setVendorInputValue(itemData.vendor?.name);
-  };
 
   const search = async () => {
     setItemData(null);

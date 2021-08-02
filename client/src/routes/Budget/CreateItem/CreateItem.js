@@ -54,7 +54,6 @@ const CreateItem = ({ isOpen, close }) => {
     closeCurrencySelect,
     handleUnitPriceCurrencyChange,
     formValues,
-    handleFormChange,
     setQuantity,
     executeCreateItem,
     handleDatePurchasedChange,
@@ -157,6 +156,7 @@ const CreateItem = ({ isOpen, close }) => {
                       marginRight: "1em",
                     }}
                     src={vendor.logo}
+                    alt={vendor.name}
                   />
                   {vendor.name} — {vendor.domain}
                 </Box>
@@ -173,6 +173,7 @@ const CreateItem = ({ isOpen, close }) => {
             <img
               style={{ maxWidth: "100%", maxHeight: "2em" }} // TODO: find a more elegant solution for restricting the logo height
               src={formValues.vendor?.logo}
+              alt={formValues.vendor?.name}
             />
           </Grid>
           <Grid item xs={6}>
