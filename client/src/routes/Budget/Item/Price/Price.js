@@ -19,17 +19,12 @@ const Price = ({ amount, currency, newCurrency, date }) => {
       return;
     }
 
-    (async () => {
-      const convertedAmount = await convert(
-        amount,
-        currency,
-        newCurrency,
-        date ?? "latest"
-      );
-
-      setFinalAmount(convertedAmount);
-    })();
-  }, [amount, convert, currency, currencyCode, date, newCurrency]);
+    convert(amount, currency, newCurrency, date ?? "latest").then(
+      (convertedAmount) => {
+        setFinalAmount(convertedAmount);
+      }
+    );
+  }, [amount, currency, currencyCode, date, newCurrency, convert]);
 
   if (finalAmount === null) {
     return <CircularProgress />;

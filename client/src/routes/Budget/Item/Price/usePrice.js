@@ -1,20 +1,27 @@
 import { exchangeRates } from "exchange-rates-api";
+import { useCallback } from "react";
 
 const usePrice = () => {
-  const convert = async (amount, fromCurrency, toCurrency, date) => {
-    const instance = exchangeRates();
-    instance.setApiBaseUrl("https://api.exchangerate.host");
+  const convert = useCallback(
+    async (amount, fromCurrency, toCurrency, date) => {
+      const instance = exchangeRates();
+      instance.setApiBaseUrl("https://api.exchangerate.host");
 
-    if (date === "latest") {
-      instance.latest();
-    } else {
-      instance.at(date);
-    }
+      if (date === "latest") {
+        instance.latest();
+      } else {
+        instance.at(date);
+      }
 
-    const rate = await instance.base(fromCurrency).symbols(toCurrency).fetch();
+      const rate = await instance
+        .base(fromCurrency)
+        .symbols(toCurrency)
+        .fetch();
 
-    return rate * amount;
-  };
+      return rate * amount;
+    },
+    []
+  );
 
   const format = (amount, currency) => {
     if (amount === null) return null;
