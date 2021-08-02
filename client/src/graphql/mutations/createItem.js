@@ -11,23 +11,21 @@ const CREATE_ITEM = gql`
     $isPurchased: Boolean!
     $datePurchased: String!
     $url: String!
-    $vendorName: String!
-    $vendorLogo: String!
-    $vendorDomain: String!
+    $vendor: VendorCreateInput!
   ) {
     createItem(
-      name: $name
-      priority: $priority
-      description: $description
-      quantity: $quantity
-      unitPrice: $unitPrice
-      unitPriceCurrency: $unitPriceCurrency
-      isPurchased: $isPurchased
-      datePurchased: $datePurchased
-      url: $url
-      vendorName: $vendorName
-      vendorLogo: $vendorLogo
-      vendorDomain: $vendorDomain
+      item: {
+        name: $name
+        priority: $priority
+        description: $description
+        quantity: $quantity
+        unitPrice: $unitPrice
+        unitPriceCurrency: $unitPriceCurrency
+        isPurchased: $isPurchased
+        datePurchased: $datePurchased
+        url: $url
+        vendor: $vendor
+      }
     ) {
       name
     }
