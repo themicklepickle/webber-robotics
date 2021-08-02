@@ -7,12 +7,8 @@ const invalidBorderStyle = {
   borderRadius: "2px",
 };
 
-const QuantitySelect = ({ itemId, initialQuantity, onChange }) => {
-  const { quantity, updateQuantity, isInvalid } = useQuantitySelect(
-    itemId,
-    initialQuantity,
-    onChange
-  );
+const QuantitySelect = ({ quantity, setQuantity }) => {
+  const { updateQuantity, isInvalid } = useQuantitySelect(setQuantity);
 
   const adornment = (
     <InputAdornment position="start" style={{ fontStyle: "italic" }}>

@@ -243,8 +243,8 @@ const CreateItem = ({ isOpen, close }) => {
             </Grid>
             <Grid item xs={2}>
               <QuantitySelect
-                initialQuantity={formValues.quantity}
-                onChange={setQuantity}
+                quantity={formValues.quantity}
+                setQuantity={setQuantity}
               />
             </Grid>
           </Grid>

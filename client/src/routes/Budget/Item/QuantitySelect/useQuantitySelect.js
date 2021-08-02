@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-const useQuantitySelect = (itemId, initialQuantity, onChange) => {
+const useQuantitySelect = (setQuantity) => {
   const [isInvalid, setIsInvalid] = useState(false);
-  const [quantity, setQuantity] = useState(initialQuantity);
 
   const updateQuantity = (e) => {
     let newValue = e.target.value;
@@ -12,11 +11,10 @@ const useQuantitySelect = (itemId, initialQuantity, onChange) => {
     }
 
     setQuantity(newValue);
-    if (onChange) onChange(newValue);
     setIsInvalid(newValue === "0" || newValue === "");
   };
 
-  return { quantity, updateQuantity, isInvalid };
+  return { updateQuantity, isInvalid };
 };
 
 export default useQuantitySelect;
