@@ -10,6 +10,8 @@ import Price from "./Price/Price";
 import QuantitySelect from "./QuantitySelect/QuantitySelect";
 import IsPurchasedCheckBox from "./IsPurchasedCheckBox/IsPurchasedCheckBox";
 
+import useItem from "./useItem";
+
 const classes = {
   paper: {
     padding: "0.5em 0",
@@ -28,14 +30,16 @@ const Item = ({
   name,
   priority,
   description,
-  quantity,
   unitPrice,
   unitPriceCurrency,
   isPurchased,
   datePurchased,
   url,
   vendor,
+  ...initialProps
 }) => {
+  const { quantity, updateQuantity } = useItem(id, initialProps.quantity);
+
   return (
     <Paper>
       <Grid
@@ -71,7 +75,7 @@ const Item = ({
           </Box>
         </Grid>
         <Grid item xs={1}>
-          <QuantitySelect itemId={id} initialQuantity={quantity} />
+          <QuantitySelect quantity={quantity} setQuantity={updateQuantity} />
         </Grid>
         <Grid item xs={2}>
           <Box fontWeight="fontWeightBold">
