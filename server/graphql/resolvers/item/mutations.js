@@ -1,17 +1,28 @@
-import { Item } from "../../../db/models/";
+import { Item, Vendor } from "../../../db/models/";
+
+const getVendorId = async (vendor) => {
+  let doc = await Vendor.findOneAndUpdate(vendor, vendor, {
+    upsert: true,
+    new: true,
+  });
+
+  return doc._id;
+};
 
 const itemMutations = {
   createItem: async (_, { item }) => {
-    const newItem = new Item(item);
+    const vendorId = await getVendorId(item.vendor);
+
+    const newItem = new Item({ ...item, vendor: vendorId });
 
     return newItem.save();
   },
   updateItem: async (_, { id, item }) => {
+    const vendorId = await getVendorId(item.vendor);
+
     const updatedItem = await Item.findByIdAndUpdate(
       id,
-      {
-        $set: { ...item },
-      },
+      { $set: { ...item, vendor: vendorId } },
       { new: true }
     );
 
