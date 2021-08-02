@@ -12,7 +12,7 @@ const useQuantitySelect = (itemId, initialQuantity, onChange) => {
     }
 
     setQuantity(newValue);
-    onChange(newValue);
+    if (onChange) onChange(newValue);
     setIsInvalid(newValue === "0" || newValue === "");
   };
 
