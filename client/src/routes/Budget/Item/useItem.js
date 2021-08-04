@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import UPDATE_ITEM from "../../../graphql/mutations/updateItem";
+import UPDATE_ITEM_QUANTITY from "../../../graphql/mutations/updateItemQuantity";
 
 const useItem = (itemId, initialQuantity) => {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const [updateItem] = useMutation(UPDATE_ITEM, {
+  const [updateItemQuantity] = useMutation(UPDATE_ITEM_QUANTITY, {
     variables: {
       id: itemId,
     },
@@ -15,7 +15,7 @@ const useItem = (itemId, initialQuantity) => {
     const newQuantityInt = parseInt(newQuantity);
 
     setQuantity(newQuantityInt);
-    updateItem({
+    updateItemQuantity({
       variables: {
         quantity: newQuantityInt,
       },
