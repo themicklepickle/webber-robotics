@@ -3,7 +3,7 @@ import { green } from "@material-ui/core/colors";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 
-import UPDATE_ITEM_PURCHASED from "../graphql/mutations/updateItemPurchased";
+import { UPDATE_ITEM_PURCHASED } from "../graphql/mutations";
 import { useMutation } from "@apollo/client";
 
 import { useState } from "react";

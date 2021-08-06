@@ -4,13 +4,15 @@ import { Grid, Box, Paper, IconButton } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import Priority from "../components/Priority";
-import Vendor from "../components/Vendor";
-import Price from "../components/Price";
-import QuantitySelect from "../components/QuantitySelect";
-import IsPurchasedCheckBox from "../components/IsPurchasedCheckBox";
+import {
+  Priority,
+  Vendor,
+  Price,
+  QuantitySelect,
+  IsPurchasedCheckBox,
+} from "../components";
 
-import useItem from "../hooks/useItem";
+import { useItem } from "../hooks";
 
 const classes = {
   paper: {

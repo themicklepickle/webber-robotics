@@ -24,11 +24,8 @@ import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import useStep from "../hooks/useStep";
-import QuantitySelect from "../components/QuantitySelect";
-import ItemCard from "../components/ItemCard";
-
-import useCreateItem from "../hooks/useCreateItem";
+import { QuantitySelect, ItemCard } from "../components";
+import { useStep, useCreateItem } from "../hooks";
 
 const classes = {
   loading: {
