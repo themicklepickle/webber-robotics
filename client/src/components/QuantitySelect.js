@@ -1,6 +1,6 @@
 import { InputAdornment, InputBase } from "@material-ui/core";
 
-import useQuantitySelect from "./useQuantitySelect";
+import useQuantitySelect from "../hooks/useQuantitySelect";
 
 const invalidBorderStyle = {
   borderBottom: "2px solid red",

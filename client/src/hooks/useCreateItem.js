@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { useMutation } from "@apollo/client";
-import CREATE_ITEM from "../../../graphql/mutations/createItem";
+import CREATE_ITEM from "../graphql/mutations/createItem";
 
-import { shortCurrencyList, longCurrencyList } from "./currencyLists";
-import { toTitleCase } from "../../../utils/capitalization";
+import { shortCurrencyList, longCurrencyList } from "../utils/currencyLists";
+import { toTitleCase } from "../utils/capitalization";
 
 const fetchItemData = async (url) => {
   return {};

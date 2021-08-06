@@ -4,7 +4,7 @@ import getSymbolFromCurrency from "currency-symbol-map";
 
 import { CircularProgress } from "@material-ui/core";
 
-import usePrice from "./usePrice";
+import usePrice from "../hooks/usePrice";
 
 const Price = ({ amount, currency, newCurrency, date }) => {
   const { convert, format } = usePrice();

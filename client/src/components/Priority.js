@@ -1,7 +1,7 @@
 import PriorityHighRoundedIcon from "@material-ui/icons/PriorityHighRounded";
 import { Icon, Tooltip } from "@material-ui/core";
 
-import usePriority from "./usePriority";
+import usePriority from "../hooks/usePriority";
 
 const Priority = ({ priorityLevel }) => {
   const { label, color } = usePriority(priorityLevel);

@@ -1,16 +1,16 @@
-import "./budget.css";
+import "../styles/budget.css";
 
 import { Fab, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
-import Item from "./Item/Item";
-import CreateItem from "./CreateItem/CreateItem";
-import Loading from "../../components/Loading";
+import Item from "../components/Item";
+import CreateItem from "../components/CreateItem";
+import Loading from "../components/Loading";
 
 import { useQuery } from "@apollo/client";
-import ITEMS from "../../graphql/queries/items";
+import ITEMS from "../graphql/queries/items";
 
-import useBudget from "./useBudget";
+import useBudget from "../hooks/useBudget";
 
 const Budget = ({ name }) => {
   const { createItemIsVisible, openCreateItem, closeCreateItem } = useBudget();

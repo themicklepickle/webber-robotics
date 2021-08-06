@@ -10,8 +10,8 @@ import {
 import { green } from "@material-ui/core/colors";
 import { ChevronRightRounded } from "@material-ui/icons";
 
-import Price from "../../Item/Price/Price";
-import useItemCard from "./useItemCard";
+import Price from "../components/Price";
+import useItemCard from "../hooks/useItemCard";
 
 const ItemCard = ({
   name,

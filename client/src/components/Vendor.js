@@ -1,4 +1,4 @@
-import "./vendor.css";
+import "../styles/vendor.css";
 
 import { Tooltip, Button } from "@material-ui/core";
 
