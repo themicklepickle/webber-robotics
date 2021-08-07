@@ -4,7 +4,7 @@ const ItemSchema = new Schema(
   {
     name: { type: String, required: true },
     priority: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String, required: false },
     quantity: { type: Number, required: true },
     unitPrice: { type: Number, required: true },
     unitPriceCurrency: { type: String, required: true },

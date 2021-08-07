@@ -2,7 +2,7 @@ type Item implements Timestamps {
   id: ID!
   name: String!
   priority: String!
-  description: String!
+  description: String
   quantity: Int!
   unitPrice: Float!
   unitPriceCurrency: String!
@@ -20,7 +20,7 @@ type Item implements Timestamps {
 input ItemCreateInput {
   name: String!
   priority: String!
-  description: String!
+  description: String
   quantity: Int!
   unitPrice: Float!
   unitPriceCurrency: String!
