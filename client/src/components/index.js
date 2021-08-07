@@ -1,3 +1,4 @@
+export { default as ItemSearchResults } from "./ItemSearchResults";
 export { default as IsPurchasedCheckBox } from "./IsPurchasedCheckBox";
 export { default as Priority } from "./Priority";
 export { default as Loading } from "./Loading";
