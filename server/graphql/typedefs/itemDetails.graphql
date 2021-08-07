@@ -1,0 +1,9 @@
+type ItemDetails {
+  name: String
+  unitPrice: Float
+  unitPriceCurrency: String
+  url: String
+  image: String
+
+  vendor: Vendor
+}

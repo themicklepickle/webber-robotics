@@ -6,6 +6,8 @@ type Query {
 
   vendors: [Vendor]!
   vendor(id: ID!): Vendor
+
+  itemDetails(url: String!): ItemDetails
 }
 
 type Mutation {
