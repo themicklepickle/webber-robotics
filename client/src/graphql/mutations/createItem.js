@@ -4,7 +4,7 @@ const CREATE_ITEM = gql`
   mutation CreateItem(
     $name: String!
     $priority: String!
-    $description: String!
+    $description: String
     $quantity: Int!
     $unitPrice: Float!
     $unitPriceCurrency: String!
