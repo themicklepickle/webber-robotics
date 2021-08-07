@@ -1,8 +1,8 @@
 import {
-  Alert,
+  // Alert,
   Box,
   Button,
-  CircularProgress,
+  // CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -24,15 +24,8 @@ import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import { QuantitySelect, ItemCard } from "../components";
+import { QuantitySelect, ItemSearchResults } from "../components";
 import { useStep, useCreateItem } from "../hooks";
-
-const classes = {
-  loading: {
-    marginTop: "1em",
-    textAlign: "center",
-  },
-};
 
 const CreateItem = ({ isOpen, close }) => {
   const { step, nextStep, previousStep, setInitialStep } = useStep(3);
@@ -41,10 +34,6 @@ const CreateItem = ({ isOpen, close }) => {
     searchURL,
     setSearchURL,
     search,
-    loadingItems,
-    itemData,
-    gotResult,
-    noResults,
     currencies,
     currencySelectIsOpen,
     openCurrencySelect,
@@ -64,6 +53,8 @@ const CreateItem = ({ isOpen, close }) => {
     handleVendorChange,
     getTextFieldProps,
     validateItemDetails,
+    renderSearch,
+    update,
   } = useCreateItem(setInitialStep);
 
   const cancelButton = (
@@ -95,16 +86,14 @@ const CreateItem = ({ isOpen, close }) => {
           }}
           style={{ marginBottom: "0.5em" }}
         />
-        {loadingItems && (
-          <div style={classes.loading}>
-            <CircularProgress></CircularProgress>
-          </div>
-        )}
-        {gotResult && itemData && <ItemCard {...itemData} select={nextStep} />}
-        {noResults && itemData && (
-          <Alert severity="error">
-            No results found — please enter details manually.
-          </Alert>
+        {renderSearch && (
+          <ItemSearchResults
+            url={searchURL}
+            select={(item) => {
+              nextStep();
+              update(item);
+            }}
+          />
         )}
       </DialogContent>
 

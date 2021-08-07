@@ -6,10 +6,6 @@ import { CREATE_ITEM } from "../graphql/mutations";
 import { shortCurrencyList, longCurrencyList } from "../utils/currencyLists";
 import { toTitleCase } from "../utils/capitalization";
 
-const fetchItemData = async (url) => {
-  return {};
-};
-
 const useCreateItem = (setInitialStep) => {
   const defaultItem = {
     name: "",
@@ -30,30 +26,28 @@ const useCreateItem = (setInitialStep) => {
   };
 
   const [searchURL, setSearchURL] = useState("");
-  const [loadingItems, setLoadingItems] = useState(false);
-  const [itemData, setItemData] = useState(null);
-  const [gotResult, setGotResult] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+  const [renderSearch, setRenderSearch] = useState(false);
   const [currencies, setCurrencies] = useState(shortCurrencyList);
   const [currencySelectIsOpen, setCurrencySelectIsOpen] = useState(false);
   const [formValues, setFormValues] = useState(defaultItem);
   const [suggestedVendors, setSuggestedVendors] = useState([]);
   const [vendorInputValue, setVendorInputValue] = useState("");
   const [errors, setErrors] = useState({});
+
   const [createItem] = useMutation(CREATE_ITEM, {
     refetchQueries: ["GetItems"],
   });
 
-  useEffect(() => {
-    if (!itemData) return;
+  // useEffect(() => {
+  //   if (!itemData) return;
 
-    const itemDataIsEmpty = Object.keys(itemData).length === 0;
+  //   const itemDataIsEmpty = Object.keys(itemData).length === 0;
 
-    setNoResults(itemDataIsEmpty);
-    setGotResult(!itemDataIsEmpty);
-    setFormValues((formValues) => Object.assign(formValues, itemData));
-    setVendorInputValue(itemData.vendor?.name);
-  }, [itemData]);
+  //   setNoResults(itemDataIsEmpty);
+  //   setGotResult(!itemDataIsEmpty);
+  //   setFormValues((formValues) => Object.assign(formValues, itemData));
+  //   setVendorInputValue(itemData.vendor?.name);
+  // }, [itemData]);
 
   useEffect(() => {
     const autocompleteVendors = async () => {
@@ -76,22 +70,34 @@ const useCreateItem = (setInitialStep) => {
 
   const priorities = ["Low", "Medium", "High"]; // TODO: make this a prop
 
+  const update = (itemData) => {
+    setFormValues((formValues) =>
+      Object.assign(formValues, {
+        ...itemData,
+        vendor: {
+          name: itemData.vendor?.name,
+          logo: itemData.vendor?.logo,
+          domain: itemData.vendor?.domain,
+        },
+      })
+    );
+    setVendorInputValue(itemData.vendor?.name);
+  };
+
   const search = async () => {
-    setItemData(null);
-    setLoadingItems(true);
-
-    setGotResult(false);
-    setNoResults(false);
-
-    const data = await fetchItemData(searchURL);
-
-    setItemData(data);
-    setLoadingItems(false);
+    // setItemData(null);
+    // setLoadingItems(true);
+    // setGotResult(false);
+    // setNoResults(false);
+    // const data = await fetchItemData(searchURL);
+    // setItemData(data);
+    // setLoadingItems(false);
+    setRenderSearch(false);
+    setRenderSearch(true);
   };
 
   const reset = () => {
     setSearchURL("");
-    setItemData(null);
     setInitialStep();
     setCurrencies(shortCurrencyList);
     setFormValues(defaultItem);
@@ -237,10 +243,6 @@ const useCreateItem = (setInitialStep) => {
     searchURL,
     setSearchURL,
     search,
-    loadingItems,
-    itemData,
-    gotResult,
-    noResults,
     currencies,
     currencySelectIsOpen,
     openCurrencySelect,
@@ -261,6 +263,8 @@ const useCreateItem = (setInitialStep) => {
     handleVendorChange,
     getTextFieldProps,
     validateItemDetails,
+    renderSearch,
+    update,
   };
 };
 

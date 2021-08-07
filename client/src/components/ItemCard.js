@@ -38,8 +38,8 @@ const ItemCard = ({
                 <img
                   height="30"
                   style={{ padding: "0 0 3em 3em" }}
-                  alt={vendor.name}
-                  src={vendor.logo}
+                  alt={vendor?.name}
+                  src={vendor?.logo}
                 />
               }
             >
