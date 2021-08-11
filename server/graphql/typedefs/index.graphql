@@ -13,6 +13,7 @@ type Query {
 type Mutation {
   createItem(item: ItemCreateInput!): Item!
   updateItem(id: ID!, item: ItemUpdateInput!): Item!
+  deleteItem(id: ID!): Item
 
   createVendor(vendor: VendorCreateInput!): Vendor!
   updateVendor(id: ID!, vendor: VendorUpdateInput!): Vendor!
