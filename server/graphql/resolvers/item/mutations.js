@@ -35,6 +35,9 @@ const itemMutations = {
 
     return updatedItem;
   },
+  deleteItem: async (_, { id }) => {
+    return await Item.findByIdAndDelete(id);
+  },
 };
 
 export default itemMutations;
