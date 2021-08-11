@@ -12,6 +12,9 @@ import {
   IsPurchasedCheckBox,
 } from "../components";
 
+import { DELETE_ITEM } from "../graphql/mutations";
+import { useMutation } from "@apollo/client";
+
 import { useItem } from "../hooks";
 
 const classes = {
@@ -41,6 +44,9 @@ const Item = ({
   ...initialProps
 }) => {
   const { quantity, updateQuantity } = useItem(id, initialProps.quantity);
+  const [deleteItem] = useMutation(DELETE_ITEM, {
+    variables: { id },
+  });
 
   return (
     <Paper>
@@ -94,7 +100,7 @@ const Item = ({
             <IconButton>
               <EditIcon></EditIcon>
             </IconButton>
-            <IconButton>
+            <IconButton onClick={deleteItem}>
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </Box>
