@@ -16,7 +16,6 @@ const ITEMS = gql`
       vendor {
         id
         name
-        domain
         logo
       }
     }

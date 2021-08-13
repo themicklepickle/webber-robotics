@@ -11,7 +11,6 @@ const ITEM_DETAILS = gql`
       vendor {
         name
         logo
-        domain
       }
     }
   }
