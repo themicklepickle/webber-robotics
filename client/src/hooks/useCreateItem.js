@@ -13,7 +13,6 @@ const useCreateItem = (setInitialStep) => {
     vendor: {
       name: "",
       logo: "",
-      domain: "",
     },
     url: "",
     unitPrice: "",
@@ -77,7 +76,6 @@ const useCreateItem = (setInitialStep) => {
         vendor: {
           name: itemData.vendor?.name,
           logo: itemData.vendor?.logo,
-          domain: itemData.vendor?.domain,
         },
       })
     );
