@@ -13,17 +13,14 @@ const seed = async () => {
   const vendors = [
     new Vendor({
       name: "Canadian Tire",
-      domain: "canadiantire.ca",
       logo: "https://logo.clearbit.com/canadiantire.ca",
     }),
     new Vendor({
       name: "REV Robotics",
-      domain: "revrobotics.com",
       logo: "https://logo.clearbit.com/revrobotics.com",
     }),
     new Vendor({
       name: "AliExpress",
-      domain: "aliexpress.com",
       logo: "https://logo.clearbit.com/aliexpress.com",
     }),
   ];
