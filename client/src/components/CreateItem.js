@@ -142,7 +142,7 @@ const CreateItem = ({ isOpen, close }) => {
                     src={vendor.logo}
                     alt={vendor.name}
                   />
-                  {vendor.name} — {vendor.domain}
+                  {vendor.name}
                 </Box>
               )}
               renderInput={(params) => (
