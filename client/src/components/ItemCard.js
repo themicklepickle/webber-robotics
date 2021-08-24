@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import {
   Card,
   CardMedia,
@@ -11,7 +13,6 @@ import { green } from "@material-ui/core/colors";
 import { ChevronRightRounded } from "@material-ui/icons";
 
 import { Price } from "../components";
-import { useItemCard } from "../hooks";
 
 const ItemCard = ({
   name,
@@ -22,7 +23,11 @@ const ItemCard = ({
   image,
   select,
 }) => {
-  const { selectButton, focusOnSelectButton } = useItemCard();
+  const selectButton = useRef(null);
+
+  const focusOnSelectButton = () => {
+    selectButton.current.focus();
+  };
 
   return (
     <Grow in={true} timeout={600} onEntered={focusOnSelectButton}>

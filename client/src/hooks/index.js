@@ -1,4 +1,3 @@
-export { default as useItemCard } from "./useItemCard";
 export { default as useCreateItem } from "./useCreateItem";
 export { default as useQuantitySelect } from "./useQuantitySelect";
 export { default as useStep } from "./useStep";
