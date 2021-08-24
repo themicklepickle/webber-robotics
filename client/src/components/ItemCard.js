@@ -6,23 +6,12 @@ import {
   Grid,
   Typography,
   IconButton,
-  Badge,
   Grow,
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { ChevronRightRounded } from "@material-ui/icons";
 
-import { Price } from "../components";
-
-const ItemCard = ({
-  name,
-  unitPrice,
-  unitPriceCurrency,
-  vendor,
-  url,
-  image,
-  select,
-}) => {
+const ItemCard = ({ name, vendor, image, select }) => {
   const selectButton = useRef(null);
 
   const focusOnSelectButton = () => {
@@ -34,22 +23,7 @@ const ItemCard = ({
       <Card>
         <Grid container direction="row">
           <Grid item xs={4} alignSelf="center">
-            <Badge
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              badgeContent={
-                <img
-                  height="30"
-                  style={{ padding: "0 0 3em 3em" }}
-                  alt={vendor?.name}
-                  src={vendor?.logo}
-                />
-              }
-            >
-              <CardMedia component="img" image={image} />
-            </Badge>
+            <CardMedia component="img" image={image} />
           </Grid>
           <Grid item xs={8}>
             <Grid
@@ -63,9 +37,19 @@ const ItemCard = ({
                   <Typography gutterBottom variant="h6">
                     {name}
                   </Typography>
-                </Grid>
-                <Grid item>
-                  <Price amount={unitPrice} currency={unitPriceCurrency} />
+                  <Grid container alignItems="center">
+                    <Grid item xs={2} style={{ paddingRight: "1em" }}>
+                      <img
+                        height="30px"
+                        style={{ verticalAlign: "middle" }}
+                        alt={vendor?.name}
+                        src={vendor?.logo}
+                      />
+                    </Grid>
+                    <Grid item xs={10} style={{ margin: 0, color: "#6b6b6b" }}>
+                      {vendor?.name}
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
               <Grid item xs={2} alignSelf="center">
