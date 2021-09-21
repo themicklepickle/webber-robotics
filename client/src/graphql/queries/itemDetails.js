@@ -4,8 +4,6 @@ const ITEM_DETAILS = gql`
   query GetItemDetails($url: String!) {
     itemDetails(url: $url) {
       name
-      unitPrice
-      unitPriceCurrency
       url
       image
       vendor {
