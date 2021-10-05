@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 import {
   Card,
@@ -10,9 +10,14 @@ import {
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { ChevronRightRounded } from "@material-ui/icons";
+import { CreateItemContext } from "../contexts";
 
-const ItemCard = ({ name, vendor, image, select }) => {
+const ItemCard = (props) => {
+  const { name, image } = props;
+  const { __typename, ...vendor } = props.vendor;
   const selectButton = useRef(null);
+  const { nextStep, itemDetails, setItemDetails } =
+    useContext(CreateItemContext);
 
   const focusOnSelectButton = () => {
     selectButton.current.focus();
@@ -53,7 +58,13 @@ const ItemCard = ({ name, vendor, image, select }) => {
                 </Grid>
               </Grid>
               <Grid item xs={2} alignSelf="center">
-                <IconButton onClick={select} ref={selectButton}>
+                <IconButton
+                  onClick={() => {
+                    setItemDetails({ ...itemDetails, ...props, vendor });
+                    nextStep();
+                  }}
+                  ref={selectButton}
+                >
                   <ChevronRightRounded
                     fontSize="large"
                     style={{ color: green[500] }}

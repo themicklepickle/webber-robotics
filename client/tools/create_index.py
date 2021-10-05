@@ -32,6 +32,7 @@ def auto():
     create_single_index("./src/hooks")
     create_single_index("./src/routes")
     create_single_index("./src/utils")
+    create_single_index("./src/contexts")
     create_single_index("./src/graphql/mutations")
     create_single_index("./src/graphql/queries")
 

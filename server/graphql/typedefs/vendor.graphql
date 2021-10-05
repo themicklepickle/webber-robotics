@@ -1,7 +1,8 @@
 type Vendor implements Timestamps {
   id: ID!
-  name: String!
-  logo: String!
+  name: String
+  logo: String
+  domain: String
 
   items: [Item]!
 
@@ -12,9 +13,11 @@ type Vendor implements Timestamps {
 input VendorCreateInput {
   name: String!
   logo: String!
+  domain: String
 }
 
 input VendorUpdateInput {
   name: String
   logo: String
+  domain: String
 }

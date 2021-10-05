@@ -35,7 +35,7 @@ const Budget = ({ name }) => {
         </Fab>
       </div>
 
-      <CreateItem isOpen={createItemIsVisible} close={closeCreateItem} />
+      <CreateItem isOpen={createItemIsVisible} closeModal={closeCreateItem} />
     </div>
   );
 };

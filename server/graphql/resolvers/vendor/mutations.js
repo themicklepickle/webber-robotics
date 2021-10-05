@@ -4,7 +4,7 @@ const vendorMutations = {
   createVendor: async (_, { vendor }) => {
     const newVendor = new Vendor(vendor);
 
-    return newVendor;
+    return newVendor.save();
   },
   updateVendor: async (_, { id, vendor }) => {
     const updatedVendor = await Vendor.findByIdAndUpdate(

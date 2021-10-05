@@ -4,6 +4,7 @@ const VendorSchema = new Schema(
   {
     name: { type: String, required: true },
     logo: { type: String, required: true },
+    domain: { type: String, required: false },
   },
   {
     timestamps: true,
