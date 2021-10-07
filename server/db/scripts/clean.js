@@ -8,6 +8,8 @@ const clean = async () => {
   await connection.dropDatabase();
 
   console.log("Database clean");
+
+  connection.close();
 };
 
 clean();
