@@ -1,11 +1,14 @@
 scalar Date
 
 type Query {
-  items: [Item]!
+  items: [Item]
   item(id: ID!): Item
 
-  vendors: [Vendor]!
+  vendors: [Vendor]
   vendor(id: ID!): Vendor
+
+  budgets: [Budget]
+  budget(id: ID!): Vendor
 
   itemDetails(url: String!): ItemDetails
 }
