@@ -21,6 +21,6 @@ type Mutation {
   createVendor(vendor: VendorCreateInput!): Vendor!
   updateVendor(id: ID!, vendor: VendorUpdateInput!): Vendor!
 
-  createBudget(budget: CreateBudgetInput!): Budget!
+  createBudget(budget: BudgetCreateInput!): Budget!
   updateBudget(id: ID!, budget: BudgetUpdateInput!): Budget!
 }
