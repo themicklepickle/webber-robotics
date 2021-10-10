@@ -10,24 +10,25 @@ import {
 } from "../components";
 import { CreateItemContext } from "../contexts";
 
-const defaultItem = {
-  name: "",
-  description: "",
-  vendor: {
+const CreateItem = ({ isOpen, closeModal, budgetId }) => {
+  const defaultItem = {
     name: "",
-    logo: "",
-  },
-  url: "",
-  unitPrice: "",
-  unitPriceCurrency: "CAD",
-  quantity: 1,
-  priority: "Medium",
-  isPurchased: false,
-  datePurchased: new Date(),
-  image: "",
-};
+    description: "",
+    vendor: {
+      name: "",
+      logo: "",
+    },
+    url: "",
+    unitPrice: "",
+    unitPriceCurrency: "CAD",
+    quantity: 1,
+    priority: "Medium",
+    isPurchased: false,
+    datePurchased: new Date(),
+    image: "",
+    budgetId,
+  };
 
-const CreateItem = ({ isOpen, closeModal }) => {
   const { step, nextStep, previousStep, setInitialStep } = useStep(3);
   const [itemDetails, setItemDetails] = useState(defaultItem);
   const [errors, setErrors] = useState({});

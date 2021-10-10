@@ -33,7 +33,7 @@ const calculatePriorityLevel = (value, prioritiesArray) => {
 
 const CreateItemFinalize = () => {
   const [createItem] = useMutation(CREATE_ITEM, {
-    refetchQueries: ["GetItems"],
+    refetchQueries: ["GetBudgetAndItems"],
   });
   const { previousStep, itemDetails, close, setItemDetail } =
     useContext(CreateItemContext);

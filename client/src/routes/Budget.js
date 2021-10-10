@@ -3,28 +3,33 @@ import "../styles/budget.css";
 import { Fab, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
-import { Item, CreateItem, Loading } from "../components";
+import { Item, CreateItem, Loading, Error } from "../components";
 
 import { useQuery } from "@apollo/client";
-import { ITEMS } from "../graphql/queries";
+import { BUDGET_AND_ITEMS } from "../graphql/queries";
+
+import { useParams } from "react-router-dom";
 
 import { useBudget } from "../hooks";
 
-const Budget = ({ name }) => {
+const Budget = () => {
+  const { budgetId } = useParams();
   const { createItemIsVisible, openCreateItem, closeCreateItem } = useBudget();
-  const { loading, error, data } = useQuery(ITEMS);
+  const { loading, error, data } = useQuery(BUDGET_AND_ITEMS, {
+    variables: { id: budgetId },
+  });
 
   if (loading) return <Loading />;
-  if (error) return <div>Error fetching items :(</div>;
+  if (error) return <Error />;
 
   return (
     <div className="wrapper">
       <div>
         <div className="title">
-          <Typography variant="h4">{name}</Typography>
+          <Typography variant="h4">{data.budget.name}</Typography>
         </div>
 
-        {data.items.map((item) => {
+        {data.budget.items.map((item) => {
           return <Item key={item.id} {...item} />;
         })}
       </div>
@@ -35,7 +40,11 @@ const Budget = ({ name }) => {
         </Fab>
       </div>
 
-      <CreateItem isOpen={createItemIsVisible} closeModal={closeCreateItem} />
+      <CreateItem
+        isOpen={createItemIsVisible}
+        closeModal={closeCreateItem}
+        budgetId={budgetId}
+      />
     </div>
   );
 };

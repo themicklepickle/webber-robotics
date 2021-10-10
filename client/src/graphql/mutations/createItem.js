@@ -12,6 +12,7 @@ const CREATE_ITEM = gql`
     $datePurchased: String!
     $url: String!
     $vendor: VendorCreateInput!
+    $budgetId: ID!
   ) {
     createItem(
       item: {
@@ -25,6 +26,7 @@ const CREATE_ITEM = gql`
         datePurchased: $datePurchased
         url: $url
         vendor: $vendor
+        budget: $budgetId
       }
     ) {
       name
