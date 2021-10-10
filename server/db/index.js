@@ -8,12 +8,7 @@ const connectDB = async () => {
   if (isConnected) return db;
 
   try {
-    db = await Mongoose.connect(mongo.url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    });
+    db = await Mongoose.connect(mongo.url);
     isConnected = db.connections[0].readyState;
     return db;
   } catch (err) {
