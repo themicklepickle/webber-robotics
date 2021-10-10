@@ -8,7 +8,7 @@ type Query {
   vendor(id: ID!): Vendor
 
   budgets: [Budget]
-  budget(id: ID!): Vendor
+  budget(id: ID!): Budget
 
   itemDetails(url: String!): ItemDetails
 }

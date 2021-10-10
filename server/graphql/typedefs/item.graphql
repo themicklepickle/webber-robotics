@@ -13,6 +13,8 @@ type Item implements Timestamps {
 
   vendor: Vendor
 
+  budget: Budget!
+
   createdAt: Date!
   updatedAt: Date!
 }
@@ -30,6 +32,8 @@ input ItemCreateInput {
   image: String
 
   vendor: VendorCreateInput!
+
+  budget: ID!
 }
 
 input ItemUpdateInput {
@@ -45,4 +49,6 @@ input ItemUpdateInput {
   image: String
 
   vendor: VendorUpdateInput
+
+  budget: ID
 }

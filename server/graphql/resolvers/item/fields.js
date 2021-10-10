@@ -1,4 +1,4 @@
-import { Vendor } from "../../../db/models";
+import { Budget, Vendor } from "../../../db/models";
 
 const itemFields = {
   Item: {
@@ -6,6 +6,11 @@ const itemFields = {
       const vendor = await Vendor.findById(item.vendor);
 
       return vendor;
+    },
+    budget: async (item) => {
+      const budget = await Budget.findById(item.budget);
+
+      return budget;
     },
   },
 };
