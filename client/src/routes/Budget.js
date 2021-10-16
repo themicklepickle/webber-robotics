@@ -23,7 +23,7 @@ const Budget = () => {
   if (error) return <Error />;
 
   return (
-    <div className="wrapper">
+    <>
       <div>
         <div className="title">
           <Typography variant="h4">{data.budget.name}</Typography>
@@ -45,7 +45,7 @@ const Budget = () => {
         closeModal={closeCreateItem}
         budgetId={budgetId}
       />
-    </div>
+    </>
   );
 };
 

@@ -16,14 +16,22 @@ const App = () => {
           </li>
         </ul>
       </div>
-      <Switch>
-        <Route path="/budgets">
-          <Budgets />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+
+      <div
+        style={{
+          width: "65em",
+          margin: "auto",
+        }}
+      >
+        <Switch>
+          <Route path="/budgets">
+            <Budgets />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
   // <Budget name="Build Team" />;
