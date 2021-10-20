@@ -13,4 +13,5 @@ export { default as ItemCard } from "./ItemCard";
 export { default as Item } from "./Item";
 export { default as Price } from "./Price";
 export { default as QuantitySelect } from "./QuantitySelect";
+export { default as EditDeleteActions } from "./EditDeleteActions";
 export { default as CreateItem } from "./CreateItem";

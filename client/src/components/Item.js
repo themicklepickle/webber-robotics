@@ -1,8 +1,6 @@
 import "../styles/item.css";
 
-import { Grid, Box, Paper, IconButton } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Grid, Box, Paper } from "@mui/material";
 
 import {
   Priority,
@@ -16,6 +14,7 @@ import { DELETE_ITEM } from "../graphql/mutations";
 import { useMutation } from "@apollo/client";
 
 import { useItem } from "../hooks";
+import EditDeleteActions from "./EditDeleteActions";
 
 const classes = {
   paper: {
@@ -96,15 +95,8 @@ const Item = ({
             />
           </Box>
         </Grid>
-        <Grid item xs={2} border="1">
-          <Box {...classes.border}>
-            <IconButton size="large">
-              <EditIcon></EditIcon>
-            </IconButton>
-            <IconButton onClick={deleteItem} size="large">
-              <DeleteIcon></DeleteIcon>
-            </IconButton>
-          </Box>
+        <Grid item xs={2}>
+          <EditDeleteActions deleteFn={deleteItem} />
         </Grid>
       </Grid>
     </Paper>
