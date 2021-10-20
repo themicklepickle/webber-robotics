@@ -1,5 +1,4 @@
-import { Fab, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Typography } from "@mui/material";
 
 import { Item, CreateItem, Loading, Error } from "../components";
 
@@ -10,12 +9,7 @@ import { useParams } from "react-router-dom";
 
 import { useBudget } from "../hooks";
 import { styled } from "@mui/system";
-
-const ButtonSection = styled("div")({
-  marginTop: "10em",
-  marginBottom: "5em",
-  textAlign: "center",
-});
+import AddButton from "../components/AddButton";
 
 const Title = styled("div")({
   marginTop: "2em",
@@ -45,11 +39,7 @@ const Budget = () => {
         })}
       </div>
 
-      <ButtonSection>
-        <Fab color="primary" onClick={openCreateItem}>
-          <AddIcon />
-        </Fab>
-      </ButtonSection>
+      <AddButton onClick={openCreateItem} />
 
       <CreateItem
         isOpen={createItemIsVisible}

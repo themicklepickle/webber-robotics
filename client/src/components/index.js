@@ -15,3 +15,4 @@ export { default as Price } from "./Price";
 export { default as QuantitySelect } from "./QuantitySelect";
 export { default as EditDeleteActions } from "./EditDeleteActions";
 export { default as CreateItem } from "./CreateItem";
+export { default as AddButton } from "./AddButton";
