@@ -12,10 +12,10 @@ import {
   Typography,
   Slider,
   Switch,
-} from "@material-ui/core";
-import { DatePicker } from "@material-ui/lab";
-import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
-import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
+} from "@mui/material";
+import { DatePicker } from "@mui/lab";
+import DateAdapter from "@mui/lab/AdapterLuxon";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 import { CreateItemContext } from "../contexts";
 
@@ -101,7 +101,7 @@ const CreateItemFinalize = () => {
               />
             </Grid>
             <Grid item xs={7}>
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <LocalizationProvider dateAdapter={DateAdapter}>
                 <DatePicker
                   disabled={!itemDetails.isPurchased}
                   label="Date Purchased"

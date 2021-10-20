@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Dialog, DialogTitle } from "@material-ui/core";
+import { Box, Dialog, DialogTitle } from "@mui/material";
 
 import { useStep } from "../hooks";
 import {

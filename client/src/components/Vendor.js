@@ -1,6 +1,6 @@
 import "../styles/vendor.css";
 
-import { Tooltip, Button } from "@material-ui/core";
+import { Tooltip, Button } from "@mui/material";
 
 const Vendor = ({ vendorName, vendorLogo, url }) => {
   return (

@@ -1,4 +1,4 @@
-import { cyan } from "@material-ui/core/colors";
+import { cyan } from "@mui/material/colors";
 
 const usePriority = (priorityLevel) => {
   const priorityColors = {

@@ -12,7 +12,7 @@ import {
   Grid,
   InputAdornment,
   Autocomplete,
-} from "@material-ui/core";
+} from "@mui/material";
 import CustomTextField from "./CustomTextfield";
 
 import getSymbolFromCurrency from "currency-symbol-map";

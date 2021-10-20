@@ -1,5 +1,5 @@
-import PriorityHighRoundedIcon from "@material-ui/icons/PriorityHighRounded";
-import { Icon, Tooltip } from "@material-ui/core";
+import PriorityHighRoundedIcon from "@mui/icons-material/PriorityHighRounded";
+import { Icon, Tooltip } from "@mui/material";
 
 import { usePriority } from "../hooks";
 

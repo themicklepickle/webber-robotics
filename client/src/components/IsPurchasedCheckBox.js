@@ -1,7 +1,7 @@
-import { IconButton, Tooltip } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import { IconButton, Tooltip } from "@mui/material";
+import { green } from "@mui/material/colors";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 
 import { UPDATE_ITEM_PURCHASED } from "../graphql/mutations";
 import { useMutation } from "@apollo/client";
@@ -39,7 +39,7 @@ const IsPurchasedCheckBox = ({
 
   if (isChecked)
     return (
-      <IconButton onClick={toggleCheck}>
+      <IconButton onClick={toggleCheck} size="large">
         <Tooltip
           title={`Purchased on ${new Date(datePurchased).toDateString()}`}
           placement="bottom"
@@ -50,7 +50,7 @@ const IsPurchasedCheckBox = ({
     );
 
   return (
-    <IconButton onClick={toggleCheck}>
+    <IconButton onClick={toggleCheck} size="large">
       <CheckBoxOutlineBlankIcon></CheckBoxOutlineBlankIcon>
     </IconButton>
   );

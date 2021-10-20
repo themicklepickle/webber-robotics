@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { ITEM_DETAILS } from "../graphql/queries";
-import { Alert, CircularProgress } from "@material-ui/core";
+import { Alert, CircularProgress } from "@mui/material";
 import ItemCard from "../components/ItemCard";
 
 const useFetchItemDetails = () => {

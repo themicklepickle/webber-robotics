@@ -1,9 +1,9 @@
 import "@fontsource/roboto";
 
-import { createTheme } from "@material-ui/core/styles";
-import { cyan, deepOrange } from "@material-ui/core/colors";
+import { createTheme, adaptV4Theme } from "@mui/material/styles";
+import { cyan, deepOrange } from "@mui/material/colors";
 
-const theme = createTheme({
+const theme = createTheme(adaptV4Theme({
   typography: {
     fontFamily: "Roboto",
   },
@@ -11,6 +11,6 @@ const theme = createTheme({
     primary: cyan,
     secondary: deepOrange,
   },
-});
+}));
 
 export default theme;

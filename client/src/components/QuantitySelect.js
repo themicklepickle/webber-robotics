@@ -1,4 +1,4 @@
-import { InputAdornment, InputBase } from "@material-ui/core";
+import { InputAdornment, InputBase } from "@mui/material";
 
 import { useQuantitySelect } from "../hooks";
 

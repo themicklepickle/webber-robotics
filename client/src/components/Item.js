@@ -1,8 +1,8 @@
 import "../styles/item.css";
 
-import { Grid, Box, Paper, IconButton } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Grid, Box, Paper, IconButton } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import {
   Priority,
@@ -98,10 +98,10 @@ const Item = ({
         </Grid>
         <Grid item xs={2} border="1">
           <Box {...classes.border}>
-            <IconButton>
+            <IconButton size="large">
               <EditIcon></EditIcon>
             </IconButton>
-            <IconButton onClick={deleteItem}>
+            <IconButton onClick={deleteItem} size="large">
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </Box>

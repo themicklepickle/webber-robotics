@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import getSymbolFromCurrency from "currency-symbol-map";
 
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
 
 import { usePrice } from "../hooks";
 

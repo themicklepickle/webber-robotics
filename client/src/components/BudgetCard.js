@@ -1,4 +1,4 @@
-import { Paper, Grid } from "@material-ui/core";
+import { Paper, Grid } from "@mui/material";
 
 const BudgetCard = ({ id, name }) => {
   return (

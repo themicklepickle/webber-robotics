@@ -7,9 +7,9 @@ import {
   Typography,
   IconButton,
   Grow,
-} from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
-import { ChevronRightRounded } from "@material-ui/icons";
+} from "@mui/material";
+import { green } from "@mui/material/colors";
+import { ChevronRightRounded } from "@mui/icons-material";
 import { CreateItemContext } from "../contexts";
 
 const ItemCard = (props) => {
@@ -64,7 +64,7 @@ const ItemCard = (props) => {
                     nextStep();
                   }}
                   ref={selectButton}
-                >
+                  size="large">
                   <ChevronRightRounded
                     fontSize="large"
                     style={{ color: green[500] }}

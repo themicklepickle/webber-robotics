@@ -1,7 +1,7 @@
 import "../styles/budget.css";
 
-import { Fab, Typography } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Fab, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 import { Item, CreateItem, Loading, Error } from "../components";
 

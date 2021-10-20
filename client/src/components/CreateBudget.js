@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import { Button, TextField } from "@material-ui/core";
-import { Box } from "@material-ui/system";
+import { Button, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import { useState } from "react";
 import { CREATE_BUDGET } from "../graphql/mutations";
 import { BUDGETS } from "../graphql/queries";
