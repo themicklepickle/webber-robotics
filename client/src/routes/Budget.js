@@ -1,5 +1,3 @@
-import "../styles/budget.css";
-
 import { Fab, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -11,6 +9,19 @@ import { BUDGET_AND_ITEMS } from "../graphql/queries";
 import { useParams } from "react-router-dom";
 
 import { useBudget } from "../hooks";
+import { styled } from "@mui/system";
+
+const ButtonSection = styled("div")({
+  marginTop: "10em",
+  marginBottom: "5em",
+  textAlign: "center",
+});
+
+const Title = styled("div")({
+  marginTop: "2em",
+  padding: "1em",
+  textAlign: "center",
+});
 
 const Budget = () => {
   const { budgetId } = useParams();
@@ -25,20 +36,20 @@ const Budget = () => {
   return (
     <>
       <div>
-        <div className="title">
+        <Title>
           <Typography variant="h4">{data.budget.name}</Typography>
-        </div>
+        </Title>
 
         {data.budget.items.map((item) => {
           return <Item key={item.id} {...item} />;
         })}
       </div>
 
-      <div className="button-section">
+      <ButtonSection>
         <Fab color="primary" onClick={openCreateItem}>
           <AddIcon />
         </Fab>
-      </div>
+      </ButtonSection>
 
       <CreateItem
         isOpen={createItemIsVisible}
