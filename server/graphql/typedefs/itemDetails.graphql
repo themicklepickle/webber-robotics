@@ -1,0 +1,7 @@
+type ItemDetails {
+  name: String
+  url: String
+  image: String
+
+  vendor: Vendor
+}

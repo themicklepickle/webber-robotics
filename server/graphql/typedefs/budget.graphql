@@ -1,0 +1,20 @@
+type Budget implements Timestamps {
+  id: ID!
+  name: String!
+  amount: Float!
+
+  items: [Item]!
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+input BudgetCreateInput {
+  name: String!
+  amount: Float!
+}
+
+input BudgetUpdateInput {
+  name: String
+  amount: Float
+}
