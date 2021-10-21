@@ -23,4 +23,5 @@ type Mutation {
 
   createBudget(budget: BudgetCreateInput!): Budget!
   updateBudget(id: ID!, budget: BudgetUpdateInput!): Budget!
+  deleteBudget(id: ID!): Budget
 }

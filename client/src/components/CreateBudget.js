@@ -3,14 +3,13 @@ import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { CREATE_BUDGET } from "../graphql/mutations";
-import { BUDGETS } from "../graphql/queries";
 
 const CreateBudget = () => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [createBudget] = useMutation(CREATE_BUDGET, {
     variables: { name, amount },
-    refetchQueries: [BUDGETS],
+    refetchQueries: ["GetBudgets"],
   });
 
   return (

@@ -15,6 +15,9 @@ const budgetMutations = {
 
     return updatedBudget;
   },
+  deleteBudget: async (_, { id }) => {
+    return await Budget.findByIdAndDelete(id);
+  },
 };
 
 export default budgetMutations;
