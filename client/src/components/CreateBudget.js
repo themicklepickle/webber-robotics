@@ -7,8 +7,9 @@ import { BUDGETS } from "../graphql/queries";
 
 const CreateBudget = () => {
   const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
   const [createBudget] = useMutation(CREATE_BUDGET, {
-    variables: { name },
+    variables: { name, amount },
     refetchQueries: [BUDGETS],
   });
 
@@ -18,6 +19,12 @@ const CreateBudget = () => {
         label="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+      />
+      <TextField
+        label="Amount"
+        value={amount}
+        type="number"
+        onChange={(e) => setAmount(parseFloat(e.target.value))}
       />
       <Button onClick={createBudget}>Create</Button>
     </Box>
