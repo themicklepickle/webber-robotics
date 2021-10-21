@@ -1,11 +1,5 @@
-import {
-  Home,
-  Login,
-  Logout,
-  LogoutRounded,
-  PieChart,
-} from "@mui/icons-material";
-import { AppBar, Toolbar, Grid, IconButton, Typography } from "@mui/material";
+import { Home, PieChart } from "@mui/icons-material";
+import { AppBar, Toolbar, Grid, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton, LogoutButton } from "../components";

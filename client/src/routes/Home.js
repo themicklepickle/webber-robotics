@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <>
       <Header title={title}></Header>
-      <img src="Mr. Krabs.png" />
-      <img src="Gary.png" />
+      <img src="Mr. Krabs.png" alt="Mr. Krabs" />
+      <img src="Gary.png" alt="Gary" />
     </>
   );
 };
