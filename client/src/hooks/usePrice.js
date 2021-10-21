@@ -19,7 +19,7 @@ const usePrice = () => {
 
       return rate * amount;
     },
-    []
+    [client]
   );
 
   const format = (amount, currency) => {

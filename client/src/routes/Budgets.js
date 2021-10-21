@@ -1,6 +1,12 @@
 import { useQuery } from "@apollo/client";
-import { Loading, Error, CreateBudget } from "../components";
-import BudgetCard from "../components/BudgetCard";
+import {
+  Loading,
+  Error,
+  BudgetCard,
+  CreateBudget,
+  Header,
+  AddButton,
+} from "../components";
 import { BUDGETS } from "../graphql/queries";
 import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
 import { Budget } from ".";
@@ -11,6 +17,7 @@ import { usePrice } from "../hooks";
 const Budgets = () => {
   const { loading, error, data } = useQuery(BUDGETS);
   const [expenditures, setExpenditures] = useState({});
+  const [createBudgetIsVisible, setCreateBudgetIsVisible] = useState(false);
   const { convert } = usePrice();
   let match = useRouteMatch();
 
@@ -18,7 +25,6 @@ const Budgets = () => {
     const calculateExpenditures = async () => {
       if (!data?.budgets) return;
       for (const budget of data.budgets) {
-        console.log(budget.name);
         let expenditure = 0;
         for (const {
           isPurchased,
@@ -42,35 +48,10 @@ const Budgets = () => {
           Object.assign({ ...expenditures }, { [budget.id]: expenditure })
         );
       }
-
-      // data?.budgets.forEach(async (budget) => {
-      //   const expenditure = await budget.items.reduce(
-      //     async (
-      //       total,
-      //       { isPurchased, unitPrice, unitPriceCurrency, quantity }
-      //     ) => {
-      //       if (!isPurchased) return total;
-      //       if (unitPriceCurrency === "CAD")
-      //         return unitPrice * quantity + total;
-
-      //       console.log("hello");
-      //       const convertedAmount = await convert(
-      //         unitPrice,
-      //         unitPriceCurrency,
-      //         "CAD"
-      //       );
-      //       return convertedAmount * quantity + total;
-      //     },
-      //     0
-      //   );
-      //   setExpenditures((expenditures) =>
-      //     Object.assign({ ...expenditures }, { [budget.id]: expenditure })
-      //   );
-      // });
     };
 
     calculateExpenditures();
-  }, [data]);
+  }, [data, convert]);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -88,7 +69,7 @@ const Budgets = () => {
             <Budget />
           </Route>
           <Route path={match.path}>
-            <CreateBudget />
+            <Header title="Budgets" />
 
             {data.budgets.map((budget) => {
               return (
@@ -105,6 +86,13 @@ const Budgets = () => {
                 </Link>
               );
             })}
+
+            <AddButton onClick={() => setCreateBudgetIsVisible(true)} />
+
+            <CreateBudget
+              isOpen={createBudgetIsVisible}
+              closeModal={() => setCreateBudgetIsVisible(false)}
+            />
           </Route>
         </Switch>
       </div>

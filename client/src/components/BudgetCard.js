@@ -11,7 +11,7 @@ const BudgetCard = ({ id, name, amount }) => {
     refetchQueries: ["GetBudgets"],
   });
   const { expenditures } = useContext(BudgetsContext);
-  const expenditure = expenditures[id];
+  const expenditure = expenditures[id] ?? 0;
   const remaining = amount - expenditure;
 
   return (

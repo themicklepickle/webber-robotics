@@ -1,21 +1,13 @@
 import "./styles/App.css";
 
 import { Budgets, Home } from "./routes";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/budgets">Budgets</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       <div
         style={{
