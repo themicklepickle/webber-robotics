@@ -15,16 +15,17 @@ const BudgetCard = ({ id, name, amount, expenditures, remaining }) => {
         container
         direction="row"
         alignItems="center"
+        columns={16}
         style={{
           padding: "0.5em 0",
           margin: "1em 0",
           textAlign: "center",
         }}
       >
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           {name}
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Tooltip
             title={
               <>
