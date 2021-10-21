@@ -11,6 +11,12 @@ type Query {
   budget(id: ID!): Budget
 
   itemDetails(url: String!): ItemDetails
+
+  exchangeRate(
+    fromCurrency: String!
+    toCurrency: String!
+    date: String
+  ): ExchangeRate
 }
 
 type Mutation {

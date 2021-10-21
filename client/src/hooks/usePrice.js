@@ -1,22 +1,21 @@
-import { exchangeRates } from "exchange-rates-api";
+import { useApolloClient } from "@apollo/client";
 import { useCallback } from "react";
+import { EXCHANGE_RATE } from "../graphql/queries";
 
 const usePrice = () => {
+  const client = useApolloClient();
+
   const convert = useCallback(
     async (amount, fromCurrency, toCurrency, date) => {
-      const instance = exchangeRates();
-      instance.setApiBaseUrl("https://api.exchangerate.host");
-
-      if (date === "latest") {
-        instance.latest();
-      } else {
-        instance.at(date);
-      }
-
-      const rate = await instance
-        .base(fromCurrency)
-        .symbols(toCurrency)
-        .fetch();
+      const result = await client.query({
+        query: EXCHANGE_RATE,
+        variables: {
+          fromCurrency,
+          toCurrency,
+          date,
+        },
+      });
+      const { rate } = result.data.exchangeRate;
 
       return rate * amount;
     },

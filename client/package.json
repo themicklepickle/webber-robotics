@@ -17,7 +17,6 @@
     "@testing-library/user-event": "^12.1.10",
     "currency-symbol-map": "^5.0.1",
     "date-fns": "^2.0.0-beta.5",
-    "exchange-rates-api": "^1.1.0",
     "graphql": "^15.5.1",
     "luxon": "^2.0.2",
     "money": "^0.2.0",

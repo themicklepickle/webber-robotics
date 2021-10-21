@@ -1,6 +1,7 @@
 import { itemQueries, itemMutations, itemFields } from "./item";
 import { vendorQueries, vendorMutations, vendorFields } from "./vendor";
 import { itemDetailsQueries } from "./itemDetails";
+import { exchangeRateQueries } from "./exchangeRate";
 import { budgetQueries, budgetMutations, budgetFields } from "./budget";
 
 const resolvers = {
@@ -9,6 +10,7 @@ const resolvers = {
     ...vendorQueries,
     ...itemDetailsQueries,
     ...budgetQueries,
+    ...exchangeRateQueries,
   },
   Mutation: {
     ...itemMutations,
