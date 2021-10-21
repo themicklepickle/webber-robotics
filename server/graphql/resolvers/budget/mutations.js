@@ -9,9 +9,7 @@ const budgetMutations = {
   updateBudget: async (_, { id, budget }) => {
     const updatedBudget = await Budget.findByIdAndUpdate(
       id,
-      {
-        $set: { ...budget },
-      },
+      { $set: { ...budget } },
       { new: true }
     );
 

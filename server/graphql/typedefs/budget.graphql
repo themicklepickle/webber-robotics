@@ -1,6 +1,7 @@
 type Budget implements Timestamps {
   id: ID!
   name: String!
+  amount: Float!
 
   items: [Item]!
 
@@ -10,8 +11,10 @@ type Budget implements Timestamps {
 
 input BudgetCreateInput {
   name: String!
+  amount: Float!
 }
 
 input BudgetUpdateInput {
   name: String
+  amount: Float
 }
