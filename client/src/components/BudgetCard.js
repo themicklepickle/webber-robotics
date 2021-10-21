@@ -22,10 +22,10 @@ const BudgetCard = ({ id, name, amount, expenditures, remaining }) => {
           textAlign: "center",
         }}
       >
-        <Grid item xs={6}>
+        <Grid item xs={5}>
           {name}
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <Tooltip
             title={
               <>
