@@ -10,6 +10,7 @@ export { default as Error } from "./Error";
 export { default as Vendor } from "./Vendor";
 export { default as CreateItemForm } from "./CreateItemForm";
 export { default as ItemCard } from "./ItemCard";
+export { default as BudgetProgress } from "./BudgetProgress";
 export { default as Item } from "./Item";
 export { default as Price } from "./Price";
 export { default as QuantitySelect } from "./QuantitySelect";
