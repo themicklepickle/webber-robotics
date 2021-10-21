@@ -44,7 +44,7 @@ const BudgetCard = ({ id, name, amount, editFn }) => {
         </Grid>
         <Grid item xs={3}>
           <Typography style={{ color: remaining < 0 ? "red" : undefined }}>
-            {remaining < 0 && "-"}
+            {remaining < 0 && "–"}
             <Price amount={remaining} currency="CAD" />
           </Typography>
         </Grid>

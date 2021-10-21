@@ -25,6 +25,7 @@ const BudgetProgress = React.forwardRef((props, ref) => {
       <BorderLinearProgress
         variant="determinate"
         value={percentage > 100 ? 100 : percentage}
+        color={percentage > 100 ? "error" : undefined}
       />
     </div>
   );

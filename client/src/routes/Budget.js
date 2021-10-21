@@ -51,7 +51,8 @@ const Budget = () => {
             <div style={{ textAlign: "center" }}>
               <Price amount={expenditure} currency="CAD" /> spent of{" "}
               <Price amount={data.budget.amount} currency="CAD" /> (
-              <Price amount={remaining} currency="CAD" /> remaining)
+              <Price amount={remaining} currency="CAD" />{" "}
+              {remaining >= 0 ? "remaining" : "over"})
             </div>
           }
         >
