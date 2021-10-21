@@ -12,7 +12,6 @@ const exchangeRateQueries = {
     }
 
     const rate = await instance.base(fromCurrency).symbols(toCurrency).fetch();
-    console.log(rate);
 
     return { rate };
   },
