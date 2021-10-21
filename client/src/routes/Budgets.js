@@ -5,23 +5,23 @@ import { BUDGETS } from "../graphql/queries";
 import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
 import { Budget } from ".";
 import { useEffect, useState } from "react";
+import { BudgetsContext } from "../contexts";
 
 const Budgets = () => {
   const { loading, error, data } = useQuery(BUDGETS);
-  const [progress, setProgress] = useState({});
+  const [expenditures, setExpenditures] = useState({});
   let match = useRouteMatch();
 
   useEffect(() => {
     data?.budgets.forEach((budget) => {
-      const expenditures = budget.items.reduce(
+      const expenditure = budget.items.reduce(
         (total, { isPurchased, unitPrice, unitPriceCurrency, quantity }) =>
           isPurchased ? total + unitPrice * quantity : 0,
         0
       );
-      console.log(expenditures);
-      let newProgress = {};
-      newProgress[budget.id] = expenditures;
-      setProgress((progress) => Object.assign({ ...progress }, newProgress));
+      setExpenditures((expenditures) =>
+        Object.assign({ ...expenditures }, { [budget.id]: expenditure })
+      );
     });
   }, [data]);
 
@@ -29,32 +29,39 @@ const Budgets = () => {
   if (error) return <Error />;
 
   return (
-    <div>
-      <Switch>
-        <Route path={`${match.path}/:budgetId`}>
-          <Budget />
-        </Route>
-        <Route path={match.path}>
-          <CreateBudget />
+    <BudgetsContext.Provider
+      value={{
+        expenditures,
+        setExpenditures,
+      }}
+    >
+      <div>
+        <Switch>
+          <Route path={`${match.path}/:budgetId`}>
+            <Budget />
+          </Route>
+          <Route path={match.path}>
+            <CreateBudget />
 
-          {data.budgets.map((budget) => {
-            return (
-              <Link
-                to={`${match.url}/${budget.id}`}
-                style={{ textDecoration: "none" }}
-                key={budget.id}
-              >
-                <BudgetCard
-                  url={match.url}
-                  {...budget}
-                  expenditures={progress[budget.id]}
-                />
-              </Link>
-            );
-          })}
-        </Route>
-      </Switch>
-    </div>
+            {data.budgets.map((budget) => {
+              return (
+                <Link
+                  to={`${match.url}/${budget.id}`}
+                  style={{ textDecoration: "none" }}
+                  key={budget.id}
+                >
+                  <BudgetCard
+                    url={match.url}
+                    {...budget}
+                    expenditures={expenditures[budget.id]}
+                  />
+                </Link>
+              );
+            })}
+          </Route>
+        </Switch>
+      </div>
+    </BudgetsContext.Provider>
   );
 };
 

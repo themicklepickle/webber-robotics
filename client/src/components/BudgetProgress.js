@@ -17,8 +17,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const BudgetProgress = React.forwardRef((props, ref) => {
-  const { expenditures, amount } = props;
-  const percentage = (expenditures / amount) * 100;
+  const { expenditure, amount } = props;
+  const percentage = (expenditure / amount) * 100;
 
   return (
     <div {...props} ref={ref}>

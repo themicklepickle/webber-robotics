@@ -1,14 +1,18 @@
 import { useMutation } from "@apollo/client";
 import { Paper, Grid, Tooltip, Typography } from "@mui/material";
+import { useContext } from "react";
 import { BudgetProgress, EditDeleteActions, Price } from ".";
+import { BudgetsContext } from "../contexts";
 import { DELETE_BUDGET } from "../graphql/mutations";
 
-const BudgetCard = ({ id, name, amount, expenditures }) => {
+const BudgetCard = ({ id, name, amount }) => {
   const [deleteBudget] = useMutation(DELETE_BUDGET, {
     variables: { id },
     refetchQueries: ["GetBudgets"],
   });
-  const remaining = amount - expenditures;
+  const { expenditures } = useContext(BudgetsContext);
+  const expenditure = expenditures[id];
+  const remaining = amount - expenditure;
 
   return (
     <Paper>
@@ -30,12 +34,12 @@ const BudgetCard = ({ id, name, amount, expenditures }) => {
           <Tooltip
             title={
               <>
-                <Price amount={expenditures} currency="CAD" /> spent of{" "}
+                <Price amount={expenditure} currency="CAD" /> spent of{" "}
                 <Price amount={amount} currency="CAD" />
               </>
             }
           >
-            <BudgetProgress expenditures={expenditures} amount={amount} />
+            <BudgetProgress expenditure={expenditure} amount={amount} />
           </Tooltip>
         </Grid>
         <Grid item xs={3}>

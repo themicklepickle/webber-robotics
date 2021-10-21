@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 const BudgetsContext = createContext({
-  budgets: [],
-  setBudgets: () => {},
+  expenditures: [],
+  setExpenditures: () => {},
 });
 
 export default BudgetsContext;
