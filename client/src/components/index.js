@@ -2,6 +2,7 @@ export { default as CreateItemFinalize } from "./CreateItemFinalize";
 export { default as IsPurchasedCheckBox } from "./IsPurchasedCheckBox";
 export { default as CreateBudget } from "./CreateBudget";
 export { default as Priority } from "./Priority";
+export { default as EditBudget } from "./EditBudget";
 export { default as CustomTextfield } from "./CustomTextfield";
 export { default as NavBar } from "./NavBar";
 export { default as Loading } from "./Loading";

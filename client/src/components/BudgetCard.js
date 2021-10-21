@@ -5,7 +5,7 @@ import { BudgetProgress, EditDeleteActions, Price } from ".";
 import { BudgetsContext } from "../contexts";
 import { DELETE_BUDGET } from "../graphql/mutations";
 
-const BudgetCard = ({ id, name, amount }) => {
+const BudgetCard = ({ id, name, amount, editFn }) => {
   const [deleteBudget] = useMutation(DELETE_BUDGET, {
     variables: { id },
     refetchQueries: ["GetBudgets"],
@@ -49,7 +49,7 @@ const BudgetCard = ({ id, name, amount }) => {
           </Typography>
         </Grid>
         <Grid item xs={2}>
-          <EditDeleteActions deleteFn={deleteBudget} />
+          <EditDeleteActions deleteFn={deleteBudget} editFn={editFn} />
         </Grid>
       </Grid>
     </Paper>

@@ -6,6 +6,7 @@ import {
   CreateBudget,
   Header,
   AddButton,
+  EditBudget,
 } from "../components";
 import { BUDGETS } from "../graphql/queries";
 import { useRouteMatch, Switch, Route, Link } from "react-router-dom";
@@ -18,6 +19,11 @@ const Budgets = () => {
   const { loading, error, data } = useQuery(BUDGETS);
   const [expenditures, setExpenditures] = useState({});
   const [createBudgetIsVisible, setCreateBudgetIsVisible] = useState(false);
+  const [editBudgetIsVisible, setEditBudgetIsVisible] = useState(false);
+  const [editProps, setEditProps] = useState({});
+  // const [editName, setEditName] = useState("");
+  // const [editAmount, setEditAmount] = useState(null);
+  // const [editBudgetId, setEditBudgetId] = useState(null);
   const { convert } = usePrice();
   let match = useRouteMatch();
 
@@ -82,6 +88,13 @@ const Budgets = () => {
                     url={match.url}
                     {...budget}
                     expenditures={expenditures[budget.id]}
+                    editFn={() => {
+                      setEditBudgetIsVisible(true);
+                      setEditProps(budget);
+                      // setEditName(budget.name);
+                      // setEditAmount(budget.amount);
+                      // setEditBudgetId(budget.id);
+                    }}
                   />
                 </Link>
               );
@@ -92,6 +105,17 @@ const Budgets = () => {
             <CreateBudget
               isOpen={createBudgetIsVisible}
               closeModal={() => setCreateBudgetIsVisible(false)}
+            />
+            <EditBudget
+              isOpen={editBudgetIsVisible}
+              closeModal={() => setEditBudgetIsVisible(false)}
+              {...editProps}
+              setName={(name) =>
+                setEditProps((editProps) => ({ ...editProps, name }))
+              }
+              setAmount={(amount) =>
+                setEditProps((editProps) => ({ ...editProps, amount }))
+              }
             />
           </Route>
         </Switch>
