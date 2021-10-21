@@ -9,6 +9,7 @@ const useItem = (itemId, initialQuantity) => {
     variables: {
       id: itemId,
     },
+    refetchQueries: ["GetBudgets", "GetBudgetAndItems"],
   });
 
   const updateQuantity = async (newQuantity) => {

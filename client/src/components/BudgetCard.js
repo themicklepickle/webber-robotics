@@ -1,13 +1,14 @@
 import { useMutation } from "@apollo/client";
-import { Paper, Grid, Tooltip } from "@mui/material";
+import { Paper, Grid, Tooltip, Typography } from "@mui/material";
 import { BudgetProgress, EditDeleteActions, Price } from ".";
 import { DELETE_BUDGET } from "../graphql/mutations";
 
-const BudgetCard = ({ id, name, amount, expenditures, remaining }) => {
+const BudgetCard = ({ id, name, amount, expenditures }) => {
   const [deleteBudget] = useMutation(DELETE_BUDGET, {
     variables: { id },
     refetchQueries: ["GetBudgets"],
   });
+  const remaining = amount - expenditures;
 
   return (
     <Paper>
@@ -38,7 +39,10 @@ const BudgetCard = ({ id, name, amount, expenditures, remaining }) => {
           </Tooltip>
         </Grid>
         <Grid item xs={3}>
-          <Price amount={remaining} currency="CAD" />
+          <Typography style={{ color: remaining < 0 ? "red" : undefined }}>
+            {remaining < 0 && "-"}
+            <Price amount={remaining} currency="CAD" />
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <EditDeleteActions deleteFn={deleteBudget} />

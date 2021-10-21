@@ -6,6 +6,7 @@ import { CircularProgress } from "@mui/material";
 
 import { usePrice } from "../hooks";
 
+// TODO: validate currency is valid
 const Price = ({ amount, currency, newCurrency, date }) => {
   const { convert, format } = usePrice();
   const [finalAmount, setFinalAmount] = useState(null);

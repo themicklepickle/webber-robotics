@@ -6,6 +6,12 @@ const BUDGETS = gql`
       id
       name
       amount
+      items {
+        isPurchased
+        unitPrice
+        unitPriceCurrency
+        quantity
+      }
     }
   }
 `;

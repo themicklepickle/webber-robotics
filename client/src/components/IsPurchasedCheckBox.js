@@ -21,6 +21,7 @@ const IsPurchasedCheckBox = ({
     variables: {
       id: itemId,
     },
+    refetchQueries: ["GetBudgets", "GetBudgetAndItems"],
   });
 
   const toggleCheck = () => {

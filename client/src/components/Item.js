@@ -45,7 +45,7 @@ const Item = ({
   const { quantity, updateQuantity } = useItem(id, initialProps.quantity);
   const [deleteItem] = useMutation(DELETE_ITEM, {
     variables: { id },
-    refetchQueries: ["GetBudgetAndItems"],
+    refetchQueries: ["GetBudgets", "GetBudgetAndItems"],
   });
 
   return (

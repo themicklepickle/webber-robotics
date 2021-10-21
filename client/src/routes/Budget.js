@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 import { useBudget } from "../hooks";
 import { styled } from "@mui/system";
-import AddButton from "../components/AddButton";
+import { AddButton, BudgetProgress } from "../components";
 
 const Title = styled("div")({
   marginTop: "2em",
@@ -33,6 +33,7 @@ const Budget = () => {
         <Title>
           <Typography variant="h4">{data.budget.name}</Typography>
         </Title>
+        <BudgetProgress />
 
         {data.budget.items.map((item) => {
           return <Item key={item.id} {...item} />;
