@@ -26,8 +26,9 @@ const Budgets = () => {
               <Link
                 to={`${match.url}/${budget.id}`}
                 style={{ textDecoration: "none" }}
+                key={budget.id}
               >
-                <BudgetCard key={budget.id} url={match.url} {...budget} />
+                <BudgetCard url={match.url} {...budget} />
               </Link>
             );
           })}
