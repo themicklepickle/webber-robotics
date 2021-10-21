@@ -4,6 +4,7 @@ const BUDGET_AND_ITEMS = gql`
   query GetBudgetAndItems($id: ID!) {
     budget(id: $id) {
       name
+      amount
       items {
         id
         name

@@ -5,6 +5,7 @@ const BUDGETS = gql`
     budgets {
       id
       name
+      amount
     }
   }
 `;
