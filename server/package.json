@@ -11,8 +11,9 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
     "rsync:graphql": "rsync -r --include '*/' --include '*.graphql' --exclude='*' --prune-empty-dirs 'src/' 'build/'",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && npm run rsync:graphql && node ./build/index.js"
+    "build": "yarn clean && yarn build-babel && yarn rsync:graphql",
+    "heroku-postbuild": "yarn clean && yarn build-babel && yarn rsync:graphql",
+    "start": "node ./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     ]
   },
   "dependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/preset-env": "^7.15.8",
     "@graphql-tools/schema": "^8.2.0",
     "apollo-server-express": "^3.3.0",
     "cors": "^2.8.5",
@@ -46,10 +49,8 @@
     "open-graph-scraper": "^4.9.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
     "nodemon": "^2.0.13"
   }
 }
