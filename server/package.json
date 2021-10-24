@@ -1,0 +1,55 @@
+{
+  "name": "webber-robotics-api",
+  "version": "1.0.0",
+  "description": "API for Webber Robotics web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js --exec babel-node",
+    "db:seed": "babel-node ./db/scripts/seed.js",
+    "db:clean": "babel-node ./db/scripts/clean.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "rsync:graphql": "rsync -r --include '*/' --include '*.graphql' --exclude='*' --prune-empty-dirs 'src/' 'build/'",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && npm run rsync:graphql && node ./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themicklepickle/webber-robotics.git"
+  },
+  "author": "Michael Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/themicklepickle/webber-robotics/issues"
+  },
+  "homepage": "https://github.com/themicklepickle/webber-robotics#readme",
+  "nodemonConfig": {
+    "ext": "env,js,graphql,json",
+    "watch": [
+      ".env",
+      "./src"
+    ]
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^8.2.0",
+    "apollo-server-express": "^3.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "exchange-rates-api": "^1.1.0",
+    "express": "^4.17.1",
+    "get-website-favicon": "^0.0.7",
+    "graphql": "^15.6.1",
+    "mongodb": "^4.1.3",
+    "mongoose": "^6.0.10",
+    "node-fetch": "^2.6.5",
+    "open-graph-scraper": "^4.9.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "nodemon": "^2.0.13"
+  }
+}

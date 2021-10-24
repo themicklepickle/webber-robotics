@@ -1,0 +1,13 @@
+.vendor-logo {
+  max-height: 3em;
+  max-width: 4em;
+}
+
+.vendor-logo:hover {
+  -webkit-filter: opacity(60%);
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}

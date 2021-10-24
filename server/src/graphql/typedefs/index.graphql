@@ -1,0 +1,33 @@
+scalar Date
+
+type Query {
+  items: [Item]
+  item(id: ID!): Item
+
+  vendors: [Vendor]
+  vendor(id: ID!): Vendor
+
+  budgets: [Budget]
+  budget(id: ID!): Budget
+
+  itemDetails(url: String!): ItemDetails
+
+  exchangeRate(
+    fromCurrency: String!
+    toCurrency: String!
+    date: String
+  ): ExchangeRate
+}
+
+type Mutation {
+  createItem(item: ItemCreateInput!): Item!
+  updateItem(id: ID!, item: ItemUpdateInput!): Item!
+  deleteItem(id: ID!): Item
+
+  createVendor(vendor: VendorCreateInput!): Vendor!
+  updateVendor(id: ID!, vendor: VendorUpdateInput!): Vendor!
+
+  createBudget(budget: BudgetCreateInput!): Budget!
+  updateBudget(id: ID!, budget: BudgetUpdateInput!): Budget!
+  deleteBudget(id: ID!): Budget
+}
