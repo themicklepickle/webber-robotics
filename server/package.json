@@ -7,7 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./index.js --exec babel-node",
     "db:seed": "babel-node ./db/scripts/seed.js",
-    "db:clean": "babel-node ./db/scripts/clean.js"
+    "db:clean": "babel-node ./db/scripts/clean.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "rsync:graphql": "rsync -r --include '*/' --include '*.graphql' --exclude='*' --prune-empty-dirs 'src/' 'build/'",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && npm run rsync:graphql && node ./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +24,13 @@
     "url": "https://github.com/themicklepickle/webber-robotics/issues"
   },
   "homepage": "https://github.com/themicklepickle/webber-robotics#readme",
+  "nodemonConfig": {
+    "ext": "env,js,graphql,json",
+    "watch": [
+      ".env",
+      "./src"
+    ]
+  },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
     "apollo-server-express": "^3.3.0",
@@ -34,6 +46,7 @@
     "open-graph-scraper": "^4.9.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
