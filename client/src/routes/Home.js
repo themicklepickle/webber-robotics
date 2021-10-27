@@ -1,4 +1,3 @@
-import { Header } from "../components";
 import { useAuth0 } from "@auth0/auth0-react";
 import animationData from "../animations/hello.json";
 import Lottie from "react-lottie";
@@ -17,8 +16,6 @@ const animationOptions = {
 const Home = () => {
   const { user, isAuthenticated } = useAuth0();
   const [animationComplete, setAnimationComplete] = useState(false);
-
-  const title = isAuthenticated ? `Hey ${user.given_name}!` : "Webber Robotics";
 
   return (
     <Grid
