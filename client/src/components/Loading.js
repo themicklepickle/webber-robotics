@@ -15,8 +15,8 @@ const Loading = () => {
     <div style={{ height: "100vh", display: "flex" }}>
       <Lottie
         options={defaultOptions}
-        width={400}
-        height={400}
+        width={300}
+        height={300}
         style={{ margin: "auto" }}
       />
     </div>
