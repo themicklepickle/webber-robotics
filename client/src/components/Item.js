@@ -1,5 +1,3 @@
-import "../styles/item.css";
-
 import { Grid, Box, Paper } from "@mui/material";
 
 import {
