@@ -1,7 +1,7 @@
 import "./styles/App.css";
 
 import { Budgets, Home } from "./routes";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
 const App = () => {
